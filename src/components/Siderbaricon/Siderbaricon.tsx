@@ -6,15 +6,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { inject, observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { LIGHT } from "../../constants/GlobalData";
 import { GAME, HOME, SAVED, TREND } from "../../constants/SideBarStatus";
 import { GlobalStore } from "../../stores/GlobalStore";
 import SidebarMenuIcon from "../SidebarMenuIcon";
-const Handlesideiconsaved = styled.div`
-  background-color: ${(props) =>
-    props.theme === LIGHT ? "#fff" : "#313131"} !important;
-`;
+import { SideBarIconContainer } from "./StyledComponent";
 interface Siderbariconprops {}
 interface InjectedSiderbariconProps extends Siderbariconprops {
   globalStore: GlobalStore;
@@ -41,7 +36,7 @@ const SiderbarIcon = inject("globalStore")(
       navigate("/saveVideo");
     };
     return (
-      <Handlesideiconsaved theme={globalStore.themes}>
+      <SideBarIconContainer theme={globalStore.themes}>
         <SidebarMenuIcon
           icons={faHome}
           handleClickSidebarIcon={handleSideIconhHome}
@@ -66,7 +61,7 @@ const SiderbarIcon = inject("globalStore")(
           text="Saved Video"
           isActive={globalStore.status === SAVED ? true : false}
         />
-      </Handlesideiconsaved>
+      </SideBarIconContainer>
     );
   })
 );

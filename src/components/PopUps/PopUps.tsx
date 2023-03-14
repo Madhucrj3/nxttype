@@ -27,12 +27,8 @@ const PopUps = inject("globalStore")(
     const globalvariable = globalStore;
     console.log(globalvariable);
     return (
-      <PopupContainer
-        colorback={globalvariable.themes === "Light" ? "#fff" : "#000"}
-      >
-        <PopupContainerHeading
-          colorh1={globalvariable.themes === "Light" ? "#000" : "#fff"}
-        >
+      <PopupContainer colorBackground={globalvariable.themes}>
+        <PopupContainerHeading colorHeading={globalvariable.themes}>
           Are You sure you want to logout?
         </PopupContainerHeading>
         <PopupContainerButtonContainer>

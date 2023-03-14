@@ -2,19 +2,19 @@ import { action, observable } from "mobx";
 import { ApiStatus, IndividualVideoDetailInterface, VideoDetailInterface } from "../type";
 class VideoStore {
   @observable
-  homeSearch:string="";
+  homeSearch:string
   @observable
-  homeVideoData:VideoDetailInterface[]=[];
+  homeVideoData:VideoDetailInterface[]
   @observable
-  homeApiStatus:ApiStatus=ApiStatus.INITIAL;
+  homeApiStatus:ApiStatus
   @observable
-  indvidiualVideoData={};
+  indvidiualVideoData
   @observable
-  indvidiualVideoApiStatus:ApiStatus=ApiStatus.INITIAL;
+  indvidiualVideoApiStatus:ApiStatus
   @observable
-  trendingVideoData:VideoDetailInterface[]=[];
+  trendingVideoData:VideoDetailInterface[]
   @observable
-  trendingApiStatus:ApiStatus=ApiStatus.INITIAL;
+  trendingApiStatus:ApiStatus
   @observable 
   likeVideo:string[]
   @observable
@@ -22,12 +22,27 @@ class VideoStore {
   @observable
   savedVideo:VideoDetailInterface[]
   @observable
-  gamingVideoData=[]
+  gamingVideoList:VideoDetailInterface[]
   @observable
-  gameApiStatus:ApiStatus=ApiStatus.INITIAL;
+  gameingApiStatus:ApiStatus
+  constructor()
+    {
+      this.homeSearch="";
+      this.homeVideoData=[]
+      this.homeApiStatus=ApiStatus.INITIAL;
+      this.indvidiualVideoData={}
+      this.indvidiualVideoApiStatus=ApiStatus.INITIAL;
+      this.trendingVideoData=[];
+       this.trendingApiStatus=ApiStatus.INITIAL;
+        this.likeVideo=[];
+        this.disLikeVideo=[];
+        this.savedVideo=[]
+        this.gamingVideoList=[]
+        this.gameingApiStatus=ApiStatus.INITIAL;
+    }
   @action
-  getGamingData=async()=>{
-    this.gameApiStatus=ApiStatus.LOADING;
+  getGamingList=async()=>{
+    this.gameingApiStatus=ApiStatus.LOADING;
     const URL = 'https://apis.ccbp.in/videos/gaming';
     const response = await fetch(URL, {
         method: "GET",
@@ -38,36 +53,30 @@ class VideoStore {
     })
     .then((response) => {return response.json()})
     .catch((error) => {
-      this.gameApiStatus=ApiStatus.FAILURE;
+      this.gameingApiStatus=ApiStatus.FAILURE;
         console.error('Error:', error);
     });
     if(response.status_code===400){
-      this.gameApiStatus=ApiStatus.FAILURE;
+      this.gameingApiStatus=ApiStatus.FAILURE;
       console.log("error");
     }
       else{
-        this.gamingVideoData=response.videos;
-        this.gameApiStatus=ApiStatus.SUCESS;
+        this.gamingVideoList=response.videos;
+        this.gameingApiStatus=ApiStatus.SUCESS;
       }
   }
-    constructor()
-    {
-        this.likeVideo=[];
-        this.disLikeVideo=[];
-        this.savedVideo=[]
-    }
-    handleLikeuse = (id:string) => {
+    handleLikeInStore = (id:string) => {
       if (this.likeVideo.includes(id)) {
         return true;
       }
     };
-    handledislikeuse = (id:string) => {
+    handledislikeInStore = (id:string) => {
       if (this.disLikeVideo.includes(id)) {
         return true;
       }
     };
-    handlesavevideouse = (indData:IndividualVideoDetailInterface) => {
-      const result = this.savedVideo.filter((indData) => indData.id === indData.id);
+    handlesavevideoInStore = (indData:IndividualVideoDetailInterface) => {
+      const result = this.savedVideo.filter((data) => data.id === indData.id);
       console.log(result);
       if (result.length > 0) {
        return true;

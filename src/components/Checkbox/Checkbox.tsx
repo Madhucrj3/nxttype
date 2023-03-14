@@ -1,5 +1,10 @@
 import { inject, observer } from "mobx-react";
 import { GlobalStore } from "../../stores/GlobalStore";
+import {
+  CheckBoxContainer,
+  CheckBoxInput,
+  CheckBoxLabel,
+} from "./StyledComponent";
 interface CheckBoxProps {
   type: string;
   name: string;
@@ -18,18 +23,15 @@ const Checkbox = inject("globalStore")(
       handleOnClickCheckBox();
     };
     return (
-      <div
-        className="InputLoginpass"
-        style={{ color: globalData.themes === "Light" ? "#000" : "#fff" }}
-      >
-        <input
+      <CheckBoxContainer CheckboxColor={globalData.themes}>
+        <CheckBoxInput
           type={type}
           name={name}
           id={name}
           onClick={handleOnchangeCheckeBox}
         />
-        <label htmlFor={name}>Show Password</label>
-      </div>
+        <CheckBoxLabel htmlFor={name}>Show Password</CheckBoxLabel>
+      </CheckBoxContainer>
     );
   })
 );

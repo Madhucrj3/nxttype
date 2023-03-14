@@ -1,6 +1,6 @@
 import styled from "styled-components";
 interface HomeColour {
-  fcolr: string;
+  fontcolr: string;
 }
 export const HomeMainPageContainer = styled.div`
   padding: 1rem 2rem;
@@ -58,7 +58,7 @@ export const HomeBannerCross = styled.div`
   right: 5px;
   cursor: pointer;
 `;
-export const HomeSearchContd = styled.div`
+export const HomePageSearchContainer = styled.div`
   display: flex;
   margin-bottom: 1rem;
 `;
@@ -71,7 +71,7 @@ export const HomeSearchInput = styled.input`
     width: 90%;
   }
 `;
-export const HomeSearchImgdiv = styled.div`
+export const HomePageSearchImageContainer = styled.div`
   cursor: pointer;
   height: 25px;
   width: 50px;
@@ -84,7 +84,7 @@ export const HomeSearchImgdiv = styled.div`
     width: 40px;
   }
 `;
-export const HomeDataCOntd = styled.div`
+export const HomeDataContainers = styled.div`
   display: grid;
   grid-template-columns: auto auto auto;
   gap: 2rem;
@@ -95,7 +95,7 @@ export const HomeDataCOntd = styled.div`
     grid-template-columns: auto auto;
   }
 `;
-export const HomeDataContdIndividualDiv = styled.div`
+export const HomeDataMainContainerIndividual = styled.div`
   width: 100%;
   max-width: 536px;
   margin-right: 1rem;
@@ -110,23 +110,23 @@ export const HomeDataContdIndividualDiv = styled.div`
     width: 100%;
   }
 `;
-export const HomeDataContddivImg = styled.div``;
-export const HomeDataContdImg = styled.img`
+export const HomeDataMainImageContainer = styled.div``;
+export const HomeDataMainContainerImg = styled.img`
   width: 100%;
 `;
-export const HomeDataContSec = styled.div`
+export const HomeDataSecondContainer = styled.div`
   display: flex;
 `;
-export const HomeDataContSecFirst = styled.div``;
-export const HomeDataContSecSecond = styled.div``;
-export const HomeDataContSecimg = styled.img`
+export const HomeDataSecondImageContainer = styled.div``;
+export const HomeDataSecondContainerDescription = styled.div``;
+export const HomeDataSecondContainerImage = styled.img`
   height: 40px;
 `;
-export const HomeDataContSecondContainerFirst = styled.div<HomeColour>`
-  color: ${(props) => (props.fcolr === "Light" ? "#000" : "#fff")};
+export const HomeDataSecondContainerHeading = styled.div<HomeColour>`
+  color: ${(props) => (props.fontcolr === "Light" ? "#000" : "#fff")};
   margin-left: 0.3rem;
 `;
-export const HomeDataContSecondContainerFirstHeading = styled.h5`
+export const HomeDataSecondContainerFirstHeading = styled.h5`
   margin-top: 0;
   margin-bottom: 1rem;
   line-height: 24px;
@@ -136,15 +136,18 @@ export const HomeDataContSecondContainerFirstHeading = styled.h5`
   }
 `;
 
-export const HomeDataContSecondContainerSecondd = styled.div<HomeColour>`
-  color: ${(props) => (props.fcolr === "Light" ? "#000" : "#cbd5e1")};
+export const HomeDataSecondContainerParagraph = styled.div<HomeColour>`
+  color: ${(props) => (props.fontcolr === "Light" ? "#000" : "#cbd5e1")};
   margin-left: 0.3rem;
   @media screen and (max-width: 900px) and (min-width: 768px) {
     margin-bottom: 0;
   }
 `;
-export const HomeDataContSec23 = styled.div`
+export const HomeDataThirdContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 export const HomefailImg = styled.img``;
+export const HomeSecondContainerParagraph = styled.p`
+  font-size: 12px;
+`;

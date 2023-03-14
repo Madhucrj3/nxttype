@@ -16,7 +16,7 @@ interface EmptySavedprops {
 interface InjectedEmptySavedpropsProps extends EmptySavedprops {
   globalStore: GlobalStore;
 }
-const EmptySaved = inject("globalStore")(
+const NotFoundPage = inject("globalStore")(
   observer((props: EmptySavedprops) => {
     const { NoSavedSrc, NoSavedAlt, NoSavedHeading, NoSavedDescription } =
       props;
@@ -40,4 +40,4 @@ const EmptySaved = inject("globalStore")(
   })
 );
 
-export default EmptySaved;
+export default NotFoundPage;

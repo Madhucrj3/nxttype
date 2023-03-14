@@ -1,13 +1,13 @@
+import React from "react";
+import { inject, observer } from "mobx-react";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { inject, observer } from "mobx-react";
-import React, { useState } from "react";
-import { VideoStore } from "../../../stores/VideoStore";
+import { VideoStore } from "../../stores/VideoStore";
 import {
-  HomeSearchContd,
-  HomeSearchImgdiv,
+  HomePageSearchContainer,
+  HomePageSearchImageContainer,
   HomeSearchInput,
-} from "../StyledComponent";
+} from "../HomeMainContainer/StyledComponent";
 interface HomeSearchBarProps {}
 interface InjectedHomeSearchBarProps {
   videoStore: VideoStore;
@@ -23,16 +23,16 @@ const HomeSearchBar = inject("videoStore")(
     };
     return (
       <>
-        <HomeSearchContd>
+        <HomePageSearchContainer>
           <HomeSearchInput
             placeholder="Search"
             value={videoStore.homeSearch}
             onChange={handleHomeSearchBar}
           ></HomeSearchInput>
-          <HomeSearchImgdiv onClick={handleSearchHome}>
+          <HomePageSearchImageContainer onClick={handleSearchHome}>
             <FontAwesomeIcon icon={faSearch} />
-          </HomeSearchImgdiv>
-        </HomeSearchContd>
+          </HomePageSearchImageContainer>
+        </HomePageSearchContainer>
       </>
     );
   })

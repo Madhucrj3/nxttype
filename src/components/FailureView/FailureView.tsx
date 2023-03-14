@@ -1,18 +1,18 @@
 import { inject, observer } from "mobx-react";
 import { GlobalStore } from "../../stores/GlobalStore";
 import {
-  Failuremain,
-  Failuremainbtn,
+  FailureMain,
+  FailureMainButton,
   FailureMainContainer,
   FailureMainHeading,
   FailureMainImg,
   FailureMainImgContainer,
   FailureMainDescription,
-} from "./FailureStyled";
+} from "./styledComponent";
 interface Failureprops {
   src: string;
   alt: string;
-  page: () => void;
+  retryPage: () => void;
   heading: string;
   description: string;
 }
@@ -21,17 +21,15 @@ interface InjectedFailureProps extends Failureprops {
 }
 const Failure = inject("globalStore")(
   observer((props: Failureprops) => {
-    const { src, alt, page, heading, description } = props;
+    const { src, alt, retryPage, heading, description } = props;
     const { globalStore: globalVar } = props as InjectedFailureProps;
     const handleretry = () => {
-      page();
+      retryPage();
     };
 
     return (
-      <FailureMainContainer
-        style={{ height: globalVar.hasCrossBanner === false ? "100%" : "45vh" }}
-      >
-        <Failuremain
+      <FailureMainContainer heightContainer={globalVar.hasCrossBanner}>
+        <FailureMain
           colored={globalVar.themes}
           backgroundColored={globalVar.themes}
         >
@@ -40,8 +38,8 @@ const Failure = inject("globalStore")(
           </FailureMainImgContainer>
           <FailureMainHeading>{heading}</FailureMainHeading>
           <FailureMainDescription>{description}</FailureMainDescription>
-          <Failuremainbtn onClick={handleretry}>Retry</Failuremainbtn>
-        </Failuremain>
+          <FailureMainButton onClick={handleretry}>Retry</FailureMainButton>
+        </FailureMain>
       </FailureMainContainer>
     );
   })

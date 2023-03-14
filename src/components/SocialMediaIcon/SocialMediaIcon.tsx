@@ -1,5 +1,5 @@
 import React from "react";
-import { SocIcon, SocImg } from "./StyledComponent";
+import { SocailMediaIcon, SocailMediaImage } from "./StyledComponent";
 interface SocialMediaProps {
   imgSrc: string;
   imgAlt: string;
@@ -7,9 +7,9 @@ interface SocialMediaProps {
 const SocialMediaIcon = (props: SocialMediaProps) => {
   const { imgSrc, imgAlt } = props;
   return (
-    <SocIcon>
-      <SocImg src={imgSrc} alt={imgAlt}></SocImg>
-    </SocIcon>
+    <SocailMediaIcon>
+      <SocailMediaImage src={imgSrc} alt={imgAlt}></SocailMediaImage>
+    </SocailMediaIcon>
   );
 };
 

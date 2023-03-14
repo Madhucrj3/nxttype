@@ -1,18 +1,19 @@
 import styled from "styled-components";
 interface ColorBack {
-  colorback: string;
+  colorBackground: string;
 }
 interface Colorh1 {
-  colorh1: string;
+  colorHeading: string;
 }
 export const PopupContainer = styled.div<ColorBack>`
   padding: 2rem;
   border-radius: 8px;
-  background-color: ${(props) => props.colorback};
+  background-color: ${(props) =>
+    props.colorBackground === "Light" ? "#fff" : "#000"};
 `;
 export const PopupContainerHeading = styled.h4<Colorh1>`
   text-align: center;
-  color: ${(props) => props.colorh1};
+  color: ${(props) => (props.colorHeading === "Light" ? "#000" : "#fff")};
 `;
 export const PopupContainerButtonContainer = styled.div`
   display: flex;

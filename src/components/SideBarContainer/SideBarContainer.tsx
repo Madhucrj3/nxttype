@@ -1,32 +1,40 @@
-import SiderbarIcon from '../Siderbaricon';
-import { inject, observer } from 'mobx-react';
-import { GlobalStore } from '../../stores/GlobalStore';
-import SocialMediaIcon from '../SocialMediaIcon';
-import { SidebarContactUsHeading, SidebarMenu, SidebarMenuSecContainer, SidebarParaGraph, SideBarSocialMedia } from './SideBarStyledComponent';
+import SiderbarIcon from "../Siderbaricon";
+import { inject, observer } from "mobx-react";
+import { GlobalStore } from "../../stores/GlobalStore";
+import SocialMediaIcon from "../SocialMediaIcon";
+import {
+  SidebarContactUsHeading,
+  SidebarMenu,
+  SidebarMenuSecContainer,
+  SidebarParaGraph,
+  SideBarSocialMedia,
+} from "./SideBarStyledComponent";
+import { FACEBOOK, LINKEDLIN, TWITTER } from "../../constants/ImageUrl";
 
-interface InjectedSiderbarProps{
-
+interface InjectedSiderbarProps {}
+interface InjectedSideBarContainerProps extends InjectedSiderbarProps {
+  globalStore: GlobalStore;
 }
-interface InjectedSideBarContainerProps extends InjectedSiderbarProps{
-    globalStore: GlobalStore;
-  }
-const SideBarContainer = inject("globalStore")(observer((props: InjectedSiderbarProps) =>  {
-   const {globalStore:val}=props as InjectedSideBarContainerProps ;
-  return (
-    <SidebarMenu theme={val.themes}>
-      <SiderbarIcon />
-      <SidebarMenuSecContainer>
-      <SidebarContactUsHeading>CONTACT US</SidebarContactUsHeading>
-      <SideBarSocialMedia>
-        <SocialMediaIcon imgSrc="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png" imgAlt="face"/>
-        <SocialMediaIcon imgSrc="https://assets.ccbp.in/frontend/react-js/nxt-watch-twitter-logo-img.png" imgAlt="twitt"/>
-        <SocialMediaIcon imgSrc="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png" imgAlt="link"/>
-      </SideBarSocialMedia>
-      <SidebarParaGraph>Enjoy! Now to see our channels and recommendations</SidebarParaGraph>
-      </SidebarMenuSecContainer>
-    </SidebarMenu>
-  )
-})
-)
+const SideBarContainer = inject("globalStore")(
+  observer((props: InjectedSiderbarProps) => {
+    const { globalStore: val } = props as InjectedSideBarContainerProps;
+    return (
+      <SidebarMenu theme={val.themes}>
+        <SiderbarIcon />
+        <SidebarMenuSecContainer>
+          <SidebarContactUsHeading>CONTACT US</SidebarContactUsHeading>
+          <SideBarSocialMedia>
+            <SocialMediaIcon imgSrc={FACEBOOK} imgAlt="face" />
+            <SocialMediaIcon imgSrc={TWITTER} imgAlt="twitt" />
+            <SocialMediaIcon imgSrc={LINKEDLIN} imgAlt="link" />
+          </SideBarSocialMedia>
+          <SidebarParaGraph>
+            Enjoy! Now to see our channels and recommendations
+          </SidebarParaGraph>
+        </SidebarMenuSecContainer>
+      </SidebarMenu>
+    );
+  })
+);
 
-export default SideBarContainer
+export default SideBarContainer;

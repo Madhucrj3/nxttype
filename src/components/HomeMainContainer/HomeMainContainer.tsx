@@ -1,16 +1,21 @@
-import { HomeDataCOntd, HomeMainPageContainer } from "./StyledComponent";
+import { HomeDataContainers, HomeMainPageContainer } from "./StyledComponent";
 import Failure from "../FailureView";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { inject, observer } from "mobx-react";
 import { GlobalStore } from "../../stores/GlobalStore";
-import LoaderMain from "../LoaderComponent.tsx";
-import HomeBanner from "./HomeBanner";
-import HomeSearchBar from "./HomeSearchBar";
+import LoaderMain from "../LoaderComponent";
+import HomeBanner from "../HomeBanner";
+import HomeSearchBar from "../HomeSearchBar";
 import { VideoStore } from "../../stores/VideoStore";
 import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
-import HomeDataContainer from "./HomeDataContainer";
+import HomeDataContainer from "../HomeDataContainer";
 import { toJS } from "mobx";
+import {
+  FAILURE_DARK_THEME,
+  FAILURE_LIGHT_THEME,
+  NO_SEARCH_RESULT,
+} from "../../constants/ImageUrl";
 interface HomeProps {}
 
 interface InjectedHomeProps extends HomeProps {
@@ -49,18 +54,18 @@ const HomeMainContainer = inject(
               {" "}
               {data.length === 0 ? (
                 <Failure
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
+                  src={NO_SEARCH_RESULT}
                   alt="nosearch"
-                  page={handleclearSearch}
+                  retryPage={handleclearSearch}
                   heading="No Search result Found"
                   description="Try Different key word or remove search filter"
                 />
               ) : (
-                <HomeDataCOntd>
+                <HomeDataContainers>
                   {data.map((item) => (
                     <HomeDataContainer item={item} key={item.id} />
                   ))}
-                </HomeDataCOntd>
+                </HomeDataContainers>
               )}
             </>
           );
@@ -69,11 +74,11 @@ const HomeMainContainer = inject(
             <Failure
               src={
                 theme.themes === "Light"
-                  ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-                  : "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
+                  ? FAILURE_LIGHT_THEME
+                  : FAILURE_DARK_THEME
               }
               alt="fail"
-              page={handleRetryPage}
+              retryPage={handleRetryPage}
               heading="Oops! somthing Went Wrong"
               description="We are having some trouble to complete tour request Please try again"
             />

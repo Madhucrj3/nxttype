@@ -1,22 +1,21 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
-import React from "react";
-import { GlobalStore } from "../../../stores/GlobalStore";
-import Logo from "../../Logo";
+import { GlobalStore } from "../../stores/GlobalStore";
 import {
   HomeBannerCross,
   HomeMainContainerbanner,
   HomeMainContainerbannerbtn,
   HomeMainContainerbannerpara,
-} from "../StyledComponent";
-interface HomeBanner {}
+} from "../HomeMainContainer/StyledComponent";
+import Logo from "../Logo";
+interface HomeBanners {}
 
 interface InjectedHomeBannerProps {
   globalStore: GlobalStore;
 }
 const HomeBanner = inject("globalStore")(
-  observer((props: HomeBanner) => {
+  observer((props: HomeBanners) => {
     const { globalStore: theme } = props as InjectedHomeBannerProps;
     const handleBannerCross = () => {
       theme.setCrossBanner();

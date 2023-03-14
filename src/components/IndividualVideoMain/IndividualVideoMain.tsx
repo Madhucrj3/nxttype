@@ -1,14 +1,18 @@
 import { toJS } from "mobx";
 import { inject, observer } from "mobx-react";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
 import { GlobalStore } from "../../stores/GlobalStore";
 import { IndividualVideoDetailInterface } from "../../stores/type";
 import { VideoStore } from "../../stores/VideoStore";
 import Failure from "../FailureView";
-import LoaderMain from "../LoaderComponent.tsx";
-import IndividualVideoDataMain from "./IndividualVideoDataMain";
+import LoaderMain from "../LoaderComponent";
+import IndividualVideoDataMain from "../IndividualVideoDataMain";
+import {
+  FAILURE_DARK_THEME,
+  FAILURE_LIGHT_THEME,
+} from "../../constants/ImageUrl";
 interface IndividualVideo {}
 interface InjectedIndividualVideo extends IndividualVideo {
   globalStore: GlobalStore;
@@ -51,11 +55,11 @@ const IndividualVideoMain = inject(
             <Failure
               src={
                 theme.themes === "Light"
-                  ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-                  : "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
+                  ? FAILURE_LIGHT_THEME
+                  : FAILURE_DARK_THEME
               }
               alt="fail"
-              page={handleRetryPage}
+              retryPage={handleRetryPage}
               heading="Oops! somthing Went Wrong"
               description="We are having some trouble to complete tour request Please try again"
             />

@@ -13,9 +13,9 @@ interface ChannelName{
     profile_image_url:string
 }
 export interface VideoDetailInterface{
-    channel:ChannelName,
+    channel?:ChannelName,
     id:string,
-    published_at:string,
+    published_at?:string,
     thumbnail_url:string,
     title:string,
     view_count:string

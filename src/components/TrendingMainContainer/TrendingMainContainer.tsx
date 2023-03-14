@@ -1,13 +1,18 @@
 import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
 import { toJS } from "mobx";
 import { inject, observer } from "mobx-react";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
+import {
+  FAILURE_DARK_THEME,
+  FAILURE_LIGHT_THEME,
+} from "../../constants/ImageUrl";
 import { GlobalStore } from "../../stores/GlobalStore";
 import { VideoDetailInterface } from "../../stores/type";
 import { VideoStore } from "../../stores/VideoStore";
 import Failure from "../FailureView";
-import LoaderMain from "../LoaderComponent.tsx";
+import LoaderMain from "../LoaderComponent";
 import SideMainHeading from "../SideMainHeading";
 import TrendingDataContainer from "../TrendingDataContainer";
 import { TrendMainComp, TrendMainData } from "./StyledComponent";
@@ -28,10 +33,13 @@ const TrendingMainContainer = inject(
       videoStore.trendingVideoData
     ) as VideoDetailInterface[];
     console.log(trendingVideoData);
+    const navigate = useNavigate();
     useEffect(() => {
       videoStore.getTrendData();
     }, []);
-    const handleRetryPage = () => {};
+    const handleRetryPage = () => {
+      navigate("/trending");
+    };
     const renderTrendingContent = () => {
       const apiStatus = videoStore.trendingApiStatus;
       switch (apiStatus) {
@@ -58,11 +66,11 @@ const TrendingMainContainer = inject(
             <Failure
               src={
                 theme.themes === "Light"
-                  ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-                  : "https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-dark-theme-img.png"
+                  ? FAILURE_LIGHT_THEME
+                  : FAILURE_DARK_THEME
               }
               alt="fail"
-              page={handleRetryPage}
+              retryPage={handleRetryPage}
               heading="Oops! somthing Went Wrong"
               description="We are having some trouble to complete tour request Please try again"
             />

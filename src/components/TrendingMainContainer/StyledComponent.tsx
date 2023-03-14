@@ -1,7 +1,7 @@
 import styled from "styled-components";
 interface TrendDataContdDivDetailInterface {
   colors?: string;
-  colorst?: string;
+  colorOfHeading?: string;
 }
 export const TrendMainComp = styled.div`
   width: 100%;
@@ -13,17 +13,17 @@ export const TrendMainData = styled.div`
   height: 100%;
 `;
 //trend Save Data
-export const TrendDataContdDiv = styled.div`
+export const TrendingDataContainers = styled.div`
   display: flex;
   margin-bottom: 1rem;
   @media screen and (max-width: 576px) {
     display: block;
   }
 `;
-export const TrendDataContdDivImg = styled.div`
+export const TrendingDataImageContainer = styled.div`
   margin-right: 1rem;
 `;
-export const TrendDataContdImg = styled.img`
+export const TrendingDataImage = styled.img`
   width: 300px;
   height: 166.3px;
   object-fit: fill;
@@ -34,14 +34,14 @@ export const TrendDataContdImg = styled.img`
     width: 250px;
   }
 `;
-export const TrendDataContdDivDetail = styled.div<TrendDataContdDivDetailInterface>`
-  color: ${(props) => props.colors};
+export const TrendingDataContainerDetail = styled.div<TrendDataContdDivDetailInterface>`
+  color: ${(props) => (props.colors === "Light" ? "#000" : "#cbd5e1")};
   @media screen and (max-width: 576px) {
     display: flex;
     align-items: center;
   }
 `;
-export const TrendDataContdDivDetailImg = styled.div`
+export const TrendingDataImageContainerDetail = styled.div`
   display: none;
   @media screen and (max-width: 576px) {
     display: block;
@@ -49,14 +49,14 @@ export const TrendDataContdDivDetailImg = styled.div`
   }
 `;
 export const TrendDataContainerHeadingDetail = styled.h4<TrendDataContdDivDetailInterface>`
-  color: ${(props) => props.colorst};
+  color: ${(props) => (props.colorOfHeading === "Light" ? "#000" : "#fff")};
 `;
 export const TrendDataContainerParaDetail = styled.p`
   @media screen and (max-width: 576px) {
     display: inline;
   }
 `;
-export const TrendDataContainerParaDetailDiv = styled.div`
+export const TrendDataContainerParagraphDetail = styled.div`
   @media screen and (max-width: 576px) {
     display: inline;
   }

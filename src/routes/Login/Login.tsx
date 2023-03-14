@@ -16,6 +16,10 @@ import {
   WrongCredential,
 } from "./LoginStyledComponent";
 import { LIGHT } from "../../constants/GlobalData";
+import {
+  NXTWATCH_LOGO_DARK,
+  NXTWATCH_LOGO_LIGHT,
+} from "../../constants/ImageUrl";
 interface LoginProps {}
 
 interface InjectedProps {
@@ -58,20 +62,15 @@ const Login = inject(
     };
     console.log(theme.themes);
     return (
-      <LoginContainer
-        backgroundColorTheme={theme.themes === LIGHT ? "#fff" : "#313131"}
-      >
-        <LoginDiv
-          backgroundColorTheme={theme.themes === LIGHT ? "#fff" : "#000"}
-          currTheme={theme.themes === "Light" ? "#7e858e" : "#fff"}
-        >
-          <LoginDivimg style={{ color: "#fff" }}>
+      <LoginContainer backgroundColorTheme={theme.themes}>
+        <LoginDiv backgroundColorTheme={theme.themes} currTheme={theme.themes}>
+          <LoginDivimg>
             <Logo
               logoStyles={{ width: "200px" }}
               src1={
                 theme.themes === LIGHT
-                  ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                  : "https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                  ? NXTWATCH_LOGO_LIGHT
+                  : NXTWATCH_LOGO_DARK
               }
               alt1="logo"
             />

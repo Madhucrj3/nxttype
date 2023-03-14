@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../Button";
 import Logo from "../Logo";
 import Siderbaricon from "../Siderbaricon";
@@ -8,7 +8,7 @@ import {
   faArrowRightFromBracket,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-import Modal, { Styles } from "react-modal";
+import Modal from "react-modal";
 import "reactjs-popup/dist/index.css";
 import {
   DropdownContent,
@@ -26,6 +26,13 @@ import { GlobalStore } from "../../stores/GlobalStore";
 import { LIGHT } from "../../constants/GlobalData";
 import PopUps from "../PopUps";
 import customStyles from "../../utils/CustomStyle";
+import {
+  NAVBAR_DARK_THEME,
+  NAVBAR_LIGHT_THEME,
+  NXTWATCH_LOGO_DARK,
+  NXTWATCH_LOGO_LIGHT,
+  PROFILE_IMAGE,
+} from "../../constants/ImageUrl";
 interface Navbarprops {}
 interface InjectedNavbarProps extends Navbarprops {
   globalStore: GlobalStore;
@@ -50,9 +57,7 @@ const Navbar = inject("globalStore")(
     };
     console.log(theme.themes);
     return (
-      <NavbarContainer
-        backgroundColorTheme={theme.themes === LIGHT ? "000" : "#313131"}
-      >
+      <NavbarContainer backgroundColorTheme={theme.themes}>
         <NavbarContainerMain>
           <NavbarContainerLeft>
             <Logo
@@ -60,10 +65,10 @@ const Navbar = inject("globalStore")(
               handleClicklogo={handleNavbarLogoClick}
               src1={
                 theme.themes === LIGHT
-                  ? "https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                  : "https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png"
+                  ? NXTWATCH_LOGO_LIGHT
+                  : NXTWATCH_LOGO_DARK
               }
-              alt1="gflogo"
+              alt1="Navbarlogo"
             />
           </NavbarContainerLeft>
           <NavbarContainerRight>
@@ -76,11 +81,9 @@ const Navbar = inject("globalStore")(
               }}
               handleClicklogo={handleChangeTheme}
               src1={
-                theme.themes === LIGHT
-                  ? "https://res.cloudinary.com/dqgpcuxoj/image/upload/v1676033047/moon_1_shovyh.png"
-                  : "https://res.cloudinary.com/dqgpcuxoj/image/upload/v1676290605/pattern_2_1_cvjuxo.svg"
+                theme.themes === LIGHT ? NAVBAR_LIGHT_THEME : NAVBAR_DARK_THEME
               }
-              alt1="shift"
+              alt1="Theme"
             />
             <NavbarContainerLogoutbutton>
               <Logo
@@ -89,8 +92,8 @@ const Navbar = inject("globalStore")(
                   height: "30px",
                   padding: "0 1rem",
                 }}
-                src1="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
-                alt1="plogo"
+                src1={PROFILE_IMAGE}
+                alt1="ProfileImage"
               />
               <Button
                 text="Logout"

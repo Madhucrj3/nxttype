@@ -5,13 +5,13 @@ import { GlobalStore } from "../../stores/GlobalStore";
 import { VideoDetailInterface } from "../../stores/type";
 import {
   TrendDataContainerHeadingDetail,
-  TrendDataContdImg,
-  TrendDataContdDiv,
-  TrendDataContdDivDetail,
-  TrendDataContdDivDetailImg,
-  TrendDataContdDivImg,
+  TrendingDataImage,
+  TrendingDataContainers,
+  TrendingDataContainerDetail,
+  TrendingDataImageContainerDetail,
+  TrendingDataImageContainer,
   TrendDataContainerParaDetail,
-  TrendDataContainerParaDetailDiv,
+  TrendDataContainerParagraphDetail,
   TrendDataContainerParaDetailSpan,
 } from "../TrendingMainContainer/StyledComponent";
 interface TrendingDataContainerProps {
@@ -31,30 +31,28 @@ const TrendingDataContainer = inject(
       props as InjectedTrendingMainContainerProps;
     return (
       <Link to={`/videos/${tsData.id}`} style={{ textDecoration: "none" }}>
-        <TrendDataContdDiv>
-          <TrendDataContdDivImg>
-            <TrendDataContdImg src={tsData.thumbnail_url}></TrendDataContdImg>
-          </TrendDataContdDivImg>
-          <TrendDataContdDivDetail
-            colors={globalData.themes === "Light" ? "#000" : "#cbd5e1"}
-          >
-            <TrendDataContdDivDetailImg>
+        <TrendingDataContainers>
+          <TrendingDataImageContainer>
+            <TrendingDataImage src={tsData.thumbnail_url}></TrendingDataImage>
+          </TrendingDataImageContainer>
+          <TrendingDataContainerDetail colors={globalData.themes}>
+            <TrendingDataImageContainerDetail>
               <img
                 style={{ width: "50px" }}
-                src={tsData.channel.profile_image_url}
+                src={tsData.channel?.profile_image_url}
                 alt="propss"
               />
-            </TrendDataContdDivDetailImg>
+            </TrendingDataImageContainerDetail>
             <div>
               <TrendDataContainerHeadingDetail
-                colorst={globalData.themes === "Light" ? "#000" : "#fff"}
+                colorOfHeading={globalData.themes}
               >
                 {tsData.title}
               </TrendDataContainerHeadingDetail>
               <TrendDataContainerParaDetail>
-                {tsData.channel.name}{" "}
+                {tsData.channel?.name}{" "}
               </TrendDataContainerParaDetail>
-              <TrendDataContainerParaDetailDiv>
+              <TrendDataContainerParagraphDetail>
                 <TrendDataContainerParaDetailSpan>
                   {" "}
                   {tsData.view_count} views
@@ -68,10 +66,10 @@ const TrendingDataContainer = inject(
                     )}{" "}
                   Years ago
                 </TrendDataContainerParaDetailSpan>
-              </TrendDataContainerParaDetailDiv>
+              </TrendDataContainerParagraphDetail>
             </div>
-          </TrendDataContdDivDetail>
-        </TrendDataContdDiv>
+          </TrendingDataContainerDetail>
+        </TrendingDataContainers>
       </Link>
     );
   })

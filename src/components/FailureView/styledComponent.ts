@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 import { LIGHT } from '../../constants/GlobalData';
 interface bcolored{
-    colored:string,
-    backgroundColored:string
+    colored?:string,
+    backgroundColored?:string
+    heightContainer?:boolean
 }
-export const FailureMainContainer=styled.div`
+export const FailureMainContainer=styled.div<bcolored>`
 display:flex;
 justify-content:center;
 align-items:center;
 width:100%;
+height:${props=>props.heightContainer=== false ? "100%" : "45vh"}
 `;
-export const Failuremain=styled.div<bcolored>`
+export const FailureMain=styled.div<bcolored>`
 width: 100%;
 height: 100%;
 display: flex;
@@ -34,7 +36,7 @@ export const FailureMainDescription=styled.p`
 margin-top: 0;
 font-size: 24px;
 `;
-export const Failuremainbtn=styled.button`
+export const FailureMainButton=styled.button`
 background-color: #3b82f6;
 border: none;
 color: #fff;

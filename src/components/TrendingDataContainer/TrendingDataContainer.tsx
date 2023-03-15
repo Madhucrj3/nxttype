@@ -1,5 +1,4 @@
 import { inject, observer } from "mobx-react";
-import React from "react";
 import { Link } from "react-router-dom";
 import { GlobalStore } from "../../stores/GlobalStore";
 import { VideoDetailInterface } from "../../stores/type";
@@ -13,7 +12,7 @@ import {
   TrendDataContainerParaDetail,
   TrendDataContainerParagraphDetail,
   TrendDataContainerParaDetailSpan,
-} from "../TrendingMainContainer/StyledComponent";
+} from "../TrendingMainContainer/styledComponent";
 interface TrendingDataContainerProps {
   tsData: VideoDetailInterface;
 }
@@ -29,17 +28,19 @@ const TrendingDataContainer = inject(
     const { tsData } = props;
     const { globalStore: globalData } =
       props as InjectedTrendingMainContainerProps;
+    const { thumbnail_url, channel, title, view_count, published_at, id } =
+      tsData;
     return (
-      <Link to={`/videos/${tsData.id}`} style={{ textDecoration: "none" }}>
+      <Link to={`/videos/${id}`} style={{ textDecoration: "none" }}>
         <TrendingDataContainers>
           <TrendingDataImageContainer>
-            <TrendingDataImage src={tsData.thumbnail_url}></TrendingDataImage>
+            <TrendingDataImage src={thumbnail_url}></TrendingDataImage>
           </TrendingDataImageContainer>
           <TrendingDataContainerDetail colors={globalData.themes}>
             <TrendingDataImageContainerDetail>
               <img
                 style={{ width: "50px" }}
-                src={tsData.channel?.profile_image_url}
+                src={channel?.profile_image_url}
                 alt="propss"
               />
             </TrendingDataImageContainerDetail>
@@ -47,21 +48,21 @@ const TrendingDataContainer = inject(
               <TrendDataContainerHeadingDetail
                 colorOfHeading={globalData.themes}
               >
-                {tsData.title}
+                {title}
               </TrendDataContainerHeadingDetail>
               <TrendDataContainerParaDetail>
-                {tsData.channel?.name}{" "}
+                {channel?.name}{" "}
               </TrendDataContainerParaDetail>
               <TrendDataContainerParagraphDetail>
                 <TrendDataContainerParaDetailSpan>
                   {" "}
-                  {tsData.view_count} views
+                  {view_count} views
                 </TrendDataContainerParaDetailSpan>
                 <TrendDataContainerParaDetailSpan>
                   {2023 -
                     parseInt(
-                      JSON.stringify(tsData.published_at).substring(
-                        JSON.stringify(tsData.published_at).length - 5
+                      JSON.stringify(published_at).substring(
+                        JSON.stringify(published_at).length - 5
                       )
                     )}{" "}
                   Years ago

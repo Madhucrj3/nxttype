@@ -4,7 +4,7 @@ import {
   CheckBoxContainer,
   CheckBoxInput,
   CheckBoxLabel,
-} from "./StyledComponent";
+} from "./styledComponent";
 interface CheckBoxProps {
   type: string;
   name: string;

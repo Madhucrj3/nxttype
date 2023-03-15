@@ -2,7 +2,7 @@ import { inject, observer } from "mobx-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
 import { GlobalStore } from "../../stores/GlobalStore";
-import { LIGHT } from "../../constants/GlobalData";
+import { LIGHT } from "../../constants/themes";
 import { SidebarIcon, SideBarspan } from "./SiderbarMenuIconStyledComp";
 interface SidebarMenuIconProps {
   icons: IconDefinition;

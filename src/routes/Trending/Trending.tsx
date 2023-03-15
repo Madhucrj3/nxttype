@@ -1,6 +1,6 @@
 import { inject, observer } from "mobx-react";
 import TrendingMainContainer from "../../components/TrendingMainContainer";
-import { TREND } from "../../constants/SideBarStatus";
+import { TREND } from "../../constants/MenuItem";
 import withNavbarSidebarhoc from "../../hocs/withNavbarSidebarhoc";
 import { GlobalStore } from "../../stores/GlobalStore";
 interface Trendingprops {}

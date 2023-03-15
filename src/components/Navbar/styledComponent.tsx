@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LIGHT } from "../../constants/GlobalData";
+import { LIGHT } from "../../constants/themes";
 interface NavbarContainers {
   backgroundColorTheme: string;
 }
@@ -19,7 +19,7 @@ export const NavbarContainerRight = styled.div`
   display: flex;
   align-items: center;
 `;
-export const NavbarContainerLogoutbutton = styled.div`
+export const NavbarContainerbutton = styled.div`
   display: flex;
   @media screen and (max-width: 768px) {
     display: none;

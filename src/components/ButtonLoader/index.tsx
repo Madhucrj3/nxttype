@@ -1,2 +1,2 @@
 import ButtonLoader from "./ButtonLoader";
-export default ButtonLoader
+export default ButtonLoader;

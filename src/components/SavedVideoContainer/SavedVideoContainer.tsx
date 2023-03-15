@@ -1,17 +1,17 @@
 import { toJS } from "mobx";
-import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { inject, observer } from "mobx-react";
-import { NO_SAVED_VIDEO } from "../../constants/ImageUrl";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { GlobalStore } from "../../stores/GlobalStore";
-import { VideoDetailInterface } from "../../stores/type";
 import { VideoStore } from "../../stores/VideoStore";
+import { VideoDetailInterface } from "../../stores/type";
+import { NO_SAVED_VIDEO } from "../../constants/ImageUrl";
 import SideMainHeading from "../SideBarMenuSection";
 import TrendingDataContainer from "../TrendingDataContainer";
 import {
   NoSavedVideo,
   SavedVideoMain,
   SavedVideoMaindet,
-} from "./StyledComponent";
+} from "./styledComponent";
 interface SaveVideoMainContainerProps {}
 interface InjectedSaveVideoMainContainerProps
   extends SaveVideoMainContainerProps {

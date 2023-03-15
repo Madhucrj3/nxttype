@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-const ImageContainerLogo = styled.img``;
+import { ImageContainerLogo } from "./styledComponent";
 interface LogoProps {
   logoStyles: React.CSSProperties;
   src1: string;

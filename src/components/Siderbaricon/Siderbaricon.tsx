@@ -6,10 +6,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { inject, observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
-import { GAME, HOME, SAVED, TREND } from "../../constants/SideBarStatus";
+import { GAME, HOME, SAVED, TREND } from "../../constants/MenuItem";
 import { GlobalStore } from "../../stores/GlobalStore";
 import SidebarMenuIcon from "../SidebarMenuIcon";
-import { SideBarIconContainer } from "./StyledComponent";
+import { SideBarIconContainer } from "./styledComponent";
 interface Siderbariconprops {}
 interface InjectedSiderbariconProps extends Siderbariconprops {
   globalStore: GlobalStore;

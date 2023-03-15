@@ -1,21 +1,21 @@
-import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
+import { useEffect } from "react";
 import { toJS } from "mobx";
 import { inject, observer } from "mobx-react";
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { faFireFlameCurved } from "@fortawesome/free-solid-svg-icons";
+import { GlobalStore } from "../../stores/GlobalStore";
+import { VideoDetailInterface } from "../../stores/type";
+import { VideoStore } from "../../stores/VideoStore";
 import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
 import {
   FAILURE_DARK_THEME,
   FAILURE_LIGHT_THEME,
 } from "../../constants/ImageUrl";
-import { GlobalStore } from "../../stores/GlobalStore";
-import { VideoDetailInterface } from "../../stores/type";
-import { VideoStore } from "../../stores/VideoStore";
 import Failure from "../FailureView";
 import LoaderMain from "../LoaderComponent";
 import SideMainHeading from "../SideBarMenuSection";
 import TrendingDataContainer from "../TrendingDataContainer";
-import { TrendMainComp, TrendMainData } from "./StyledComponent";
+import { TrendMainComp, TrendMainData } from "./styledComponent";
 interface TrendingMainContainerProps {}
 interface InjectedTrendingMainContainerProps
   extends TrendingMainContainerProps {

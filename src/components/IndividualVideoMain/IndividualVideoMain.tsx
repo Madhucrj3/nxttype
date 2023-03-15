@@ -1,18 +1,18 @@
+import { useEffect } from "react";
 import { toJS } from "mobx";
 import { inject, observer } from "mobx-react";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
 import { GlobalStore } from "../../stores/GlobalStore";
-import { IndividualVideoDetailInterface } from "../../stores/type";
 import { VideoStore } from "../../stores/VideoStore";
-import Failure from "../FailureView";
-import LoaderMain from "../LoaderComponent";
+import { IndividualVideoDetailInterface } from "../../stores/type";
+import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
 import IndividualVideoDataMain from "../IndividualVideoDataMain";
 import {
   FAILURE_DARK_THEME,
   FAILURE_LIGHT_THEME,
 } from "../../constants/ImageUrl";
+import Failure from "../FailureView";
+import LoaderMain from "../LoaderComponent";
 interface IndividualVideo {}
 interface InjectedIndividualVideo extends IndividualVideo {
   globalStore: GlobalStore;

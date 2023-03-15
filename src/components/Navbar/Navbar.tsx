@@ -14,7 +14,7 @@ import {
   DropdownContent,
   NavbarContainer,
   NavbarContainerLeft,
-  NavbarContainerLogoutbutton,
+  NavbarContainerbutton,
   NavbarContainerMain,
   NavbarContainerRight,
   NavbarContainerRightMobileView,
@@ -23,7 +23,7 @@ import {
 } from "./styledComponent";
 import { inject, observer } from "mobx-react";
 import { GlobalStore } from "../../stores/GlobalStore";
-import { LIGHT } from "../../constants/GlobalData";
+import { LIGHT } from "../../constants/themes";
 import PopUps from "../PopUps";
 import customStyles from "../../utils/CustomStyle";
 import {
@@ -55,7 +55,11 @@ const Navbar = inject("globalStore")(
       localStorage.removeItem("token");
       navigate("/login");
     };
-    console.log(theme.themes);
+    const fontStyle = {
+      width: "30px",
+      height: "30px",
+      color: theme.themes === LIGHT ? "#000" : "#fff",
+    };
     return (
       <NavbarContainer backgroundColorTheme={theme.themes}>
         <NavbarContainerMain>
@@ -85,7 +89,7 @@ const Navbar = inject("globalStore")(
               }
               alt1="Theme"
             />
-            <NavbarContainerLogoutbutton>
+            <NavbarContainerbutton>
               <Logo
                 logoStyles={{
                   width: "30px",
@@ -109,18 +113,11 @@ const Navbar = inject("globalStore")(
                 }}
                 handleOnClick={updateLogoutModalStat(true)}
               />
-            </NavbarContainerLogoutbutton>
+            </NavbarContainerbutton>
             <NavbarContainerRightMobileView>
               <NavbarContainerRightMobileViewCurr>
                 <NavbarDropdown>
-                  <FontAwesomeIcon
-                    icon={faBars}
-                    style={{
-                      width: "30px",
-                      height: "30px",
-                      color: theme.themes === LIGHT ? "#000" : "#fff",
-                    }}
-                  />
+                  <FontAwesomeIcon icon={faBars} style={fontStyle} />
                   <DropdownContent>
                     <Siderbaricon />
                   </DropdownContent>
@@ -131,11 +128,7 @@ const Navbar = inject("globalStore")(
               >
                 <FontAwesomeIcon
                   icon={faArrowRightFromBracket}
-                  style={{
-                    width: "30px",
-                    height: "30px",
-                    color: theme.themes === LIGHT ? "#000" : "#fff",
-                  }}
+                  style={fontStyle}
                 />
               </NavbarContainerRightMobileViewCurr>
             </NavbarContainerRightMobileView>

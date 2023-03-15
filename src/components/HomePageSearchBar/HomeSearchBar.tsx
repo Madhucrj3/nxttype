@@ -7,7 +7,7 @@ import {
   HomePageSearchContainer,
   HomePageSearchImageContainer,
   HomeSearchInput,
-} from "../HomeMainContainer/StyledComponent";
+} from "../HomeMainContainer/styledComponent";
 interface HomeSearchBarProps {}
 interface InjectedHomeSearchBarProps {
   videoStore: VideoStore;

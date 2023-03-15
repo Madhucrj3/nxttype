@@ -1,5 +1,5 @@
 import { TailSpin } from "react-loader-spinner";
-import { MainLoader } from "./StyledComponent";
+import { MainLoader } from "./styledComponent";
 const LoaderMain = () => {
   return (
     <MainLoader>

@@ -1,6 +1,6 @@
 import { action, observable } from "mobx";
-import { DARK, LIGHT } from "../../constants/GlobalData";
-import { HOME } from "../../constants/SideBarStatus";
+import { DARK, LIGHT } from "../../constants/themes";
+import { HOME } from "../../constants/MenuItem";
 import { IndividualVideoDetailInterface, VideoDetailInterface } from "../type";
 class GlobalStore {
     @observable 

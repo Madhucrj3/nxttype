@@ -15,7 +15,7 @@ import {
   LoginDivimg,
   WrongCredential,
 } from "./LoginStyledComponent";
-import { LIGHT } from "../../constants/GlobalData";
+import { LIGHT } from "../../constants/themes";
 import {
   NXTWATCH_LOGO_DARK,
   NXTWATCH_LOGO_LIGHT,

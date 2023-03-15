@@ -6,7 +6,7 @@ import {
   SideMainHeadingContainer,
   SideMainHeadingImageContainer,
   SideMainHeadings,
-} from "./StyledComponent";
+} from "./styledComponent";
 interface SideMainHeadingProps {
   titleName: string;
   iconss: IconDefinition;

@@ -1,15 +1,15 @@
 import { inject, observer } from "mobx-react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { NXTWATCH_LOGO_LIGHT } from "../../constants/ImageUrl";
 import { GlobalStore } from "../../stores/GlobalStore";
+import { NXTWATCH_LOGO_LIGHT } from "../../constants/ImageUrl";
+import Logo from "../Logo";
 import {
   HomeBannerCross,
   HomeMainContainerbanner,
   HomeMainContainerbannerbtn,
   HomeMainContainerbannerpara,
-} from "../HomeMainContainer/StyledComponent";
-import Logo from "../Logo";
+} from "../HomeMainContainer/styledComponent";
 interface HomeBanners {}
 
 interface InjectedHomeBannerProps {

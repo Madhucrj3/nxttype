@@ -6,7 +6,7 @@ import {
   PopupContainer,
   PopupContainerButtonContainer,
   PopupContainerHeading,
-} from "./StyleComponent";
+} from "./styledComponent";
 interface PopUpsProps {
   closeModal: () => void;
   handleLogout: () => void;

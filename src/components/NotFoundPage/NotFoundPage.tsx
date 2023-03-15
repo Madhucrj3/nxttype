@@ -6,7 +6,7 @@ import {
   EmptySavedVideoMainContainer,
   EmptySavedVideoMain,
   EmptySavedVideoMainImg,
-} from "./StyledComponents";
+} from "./styledComponents";
 interface EmptySavedprops {
   NoSavedSrc: string;
   NoSavedAlt: string;

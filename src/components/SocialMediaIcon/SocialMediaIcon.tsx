@@ -1,5 +1,5 @@
 import React from "react";
-import { SocailMediaIcon, SocailMediaImage } from "./StyledComponent";
+import { SocailMediaIcon, SocailMediaImage } from "./styledComponent";
 interface SocialMediaProps {
   imgSrc: string;
   imgAlt: string;

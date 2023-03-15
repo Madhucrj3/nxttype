@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { LIGHT } from "../../constants/GlobalData";
+import { LIGHT } from "../../constants/themes";
 interface IndividualVideoColors {
   colors: string;
 }

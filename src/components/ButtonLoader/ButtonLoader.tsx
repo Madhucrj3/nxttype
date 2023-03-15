@@ -1,5 +1,5 @@
 import { TailSpin } from "react-loader-spinner";
-import { ButtonLoaderMain } from "./StyledComponent";
+import { ButtonLoaderMain } from "./styledComponent";
 
 const ButtonLoader = () => {
   return (

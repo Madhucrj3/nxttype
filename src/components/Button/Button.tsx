@@ -1,6 +1,6 @@
 import React from "react";
 import ButtonLoader from "../ButtonLoader/ButtonLoader";
-import { ButtonComponent, ButtonContainer } from "./StyledComponent";
+import { ButtonComponent, ButtonContainer } from "./styledComponent";
 interface ButtonProps {
   btnstyle: React.CSSProperties;
   handleOnClick(): void;

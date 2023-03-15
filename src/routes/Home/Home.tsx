@@ -1,6 +1,6 @@
 import { inject, observer } from "mobx-react";
 import HomeMainContainer from "../../components/HomeMainContainer";
-import { HOME } from "../../constants/SideBarStatus";
+import { HOME } from "../../constants/MenuItem";
 import withNavbarSidebarhoc from "../../hocs/withNavbarSidebarhoc";
 import { GlobalStore } from "../../stores/GlobalStore";
 interface Homeprops {}

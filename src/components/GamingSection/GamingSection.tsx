@@ -1,21 +1,21 @@
-import { toJS } from "mobx";
-import { faGamepad } from "@fortawesome/free-solid-svg-icons";
-import { inject, observer } from "mobx-react";
 import { useEffect } from "react";
+import { toJS } from "mobx";
+import { inject, observer } from "mobx-react";
 import { useNavigate } from "react-router-dom";
-import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
-import { LIGHT } from "../../constants/GlobalData";
-import {
-  FAILURE_DARK_THEME,
-  FAILURE_LIGHT_THEME,
-} from "../../constants/ImageUrl";
-import { GlobalStore } from "../../stores/GlobalStore";
-import { VideoDetailInterface } from "../../stores/type";
-import { VideoStore } from "../../stores/VideoStore";
+import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import Failure from "../FailureView";
 import GamingDataContainer from "../GamingDataContainer";
 import LoaderMain from "../LoaderComponent";
 import SideMainHeading from "../SideBarMenuSection";
+import { LIGHT } from "../../constants/themes";
+import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
+import { GlobalStore } from "../../stores/GlobalStore";
+import { VideoDetailInterface } from "../../stores/type";
+import { VideoStore } from "../../stores/VideoStore";
+import {
+  FAILURE_DARK_THEME,
+  FAILURE_LIGHT_THEME,
+} from "../../constants/ImageUrl";
 import {
   GameingMainComponent,
   GameingMainIndividualComponent,

@@ -1,6 +1,6 @@
 import { inject, observer } from "mobx-react";
 import SaveVideoMainContainer from "../../components/SavedVideoContainer";
-import { SAVED } from "../../constants/SideBarStatus";
+import { SAVED } from "../../constants/MenuItem";
 import withNavbarSidebarhoc from "../../hocs/withNavbarSidebarhoc";
 import { GlobalStore } from "../../stores/GlobalStore";
 interface Savedvideoprops {}

@@ -6,7 +6,7 @@ import {
   IndividualVideoReactPlayerActionContainer,
   IndividualVideoReactPlayerActionName,
   IndividualVideoReactPlayerAction,
-} from "../IndividualVideoMain/StyledComponent";
+} from "../IndividualVideoMain/styledComponent";
 interface IndividualActionContainerProps {
   text: string;
   handleActionItem(): void;

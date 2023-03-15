@@ -1,21 +1,21 @@
-import { HomeDataContainers, HomeMainPageContainer } from "./StyledComponent";
-import Failure from "../FailureView";
 import { useEffect } from "react";
+import { toJS } from "mobx";
 import { useNavigate } from "react-router-dom";
 import { inject, observer } from "mobx-react";
-import { GlobalStore } from "../../stores/GlobalStore";
-import LoaderMain from "../LoaderComponent";
-import HomeBanner from "../HomeBanner";
-import HomeSearchBar from "../HomePageSearchBar";
 import { VideoStore } from "../../stores/VideoStore";
+import { GlobalStore } from "../../stores/GlobalStore";
 import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
-import HomeDataContainer from "../HomeDataContainer";
-import { toJS } from "mobx";
 import {
   FAILURE_DARK_THEME,
   FAILURE_LIGHT_THEME,
   NO_SEARCH_RESULT,
 } from "../../constants/ImageUrl";
+import HomeDataContainer from "../HomeDataContainer";
+import LoaderMain from "../LoaderComponent";
+import HomeBanner from "../HomeBanner";
+import HomeSearchBar from "../HomePageSearchBar";
+import Failure from "../FailureView";
+import { HomeDataContainers, HomeMainPageContainer } from "./styledComponent";
 interface HomeProps {}
 
 interface InjectedHomeProps extends HomeProps {

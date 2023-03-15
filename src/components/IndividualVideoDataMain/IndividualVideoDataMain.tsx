@@ -8,8 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { GlobalStore } from "../../stores/GlobalStore";
-import { IndividualVideoDetailInterface } from "../../stores/type";
 import { VideoStore } from "../../stores/VideoStore";
+import { IndividualVideoDetailInterface } from "../../stores/type";
 
 import {
   IndividualVideoReactPlayerDescription,
@@ -24,7 +24,7 @@ import {
   IndividualVideoReactPlayerDetailDescription,
   IndividualVideoReactPlayerLikeContainer,
   IndividualVideoReactPlayerDetailHeading,
-} from "../IndividualVideoMain/StyledComponent";
+} from "../IndividualVideoMain/styledComponent";
 import IndividualActionContainer from "../IndividualActionContainer";
 
 interface IndividualVideoDataMainProps {
@@ -45,22 +45,22 @@ const IndividualVideoDataMain = inject(
     const { indVidualVideo: indData, id } = props;
     const { globalStore: globalData, videoStore } =
       props as InjectedIndividualVideoDataMainProps;
-    const [individualLike, setindividualLike] = useState(false);
-    const [individualDislike, setindividualDislike] = useState(false);
-    const [individualSaveVideo, setindividualSaveVideo] = useState(false);
+    const [individualLike, setIndividualLike] = useState(false);
+    const [individualDislike, setIndividualDislike] = useState(false);
+    const [individualSaveVideo, setIndividualSaveVideo] = useState(false);
     const { setLikeVideo, setDisLikeVideo, setSaveVideo } = videoStore;
     useEffect(() => {
       if (id !== undefined) {
         if (videoStore.handleLikeInStore(id)) {
-          setindividualLike(true);
-          setindividualDislike(false);
+          setIndividualLike(true);
+          setIndividualDislike(false);
         }
         if (videoStore.handledislikeInStore(id)) {
-          setindividualLike(false);
-          setindividualDislike(true);
+          setIndividualLike(false);
+          setIndividualDislike(true);
         }
         if (videoStore.handlesavevideoInStore(indData)) {
-          setindividualSaveVideo(true);
+          setIndividualSaveVideo(true);
         }
       }
     }, []);
@@ -69,29 +69,29 @@ const IndividualVideoDataMain = inject(
       setLikeVideo(indData.id);
       console.log("liked");
       if (id !== undefined && videoStore.handleLikeInStore(id)) {
-        setindividualLike(true);
-        setindividualDislike(false);
+        setIndividualLike(true);
+        setIndividualDislike(false);
       } else {
-        setindividualLike(false);
-        setindividualDislike(false);
+        setIndividualLike(false);
+        setIndividualDislike(false);
       }
     };
     const handledisLike = () => {
       console.log("disliked");
       setDisLikeVideo(indData.id);
       if (id !== undefined && videoStore.handledislikeInStore(id)) {
-        setindividualDislike(true);
-        setindividualLike(false);
+        setIndividualDislike(true);
+        setIndividualLike(false);
       } else {
-        setindividualDislike(false);
-        setindividualLike(false);
+        setIndividualDislike(false);
+        setIndividualLike(false);
       }
     };
     const handleSaveVideo = () => {
       setSaveVideo(indData);
       if (id !== undefined && videoStore.handlesavevideoInStore(indData)) {
-        setindividualSaveVideo(true);
-      } else setindividualSaveVideo(false);
+        setIndividualSaveVideo(true);
+      } else setIndividualSaveVideo(false);
     };
     console.log("Like" + individualLike);
     console.log("DisLike" + individualDislike);
@@ -99,12 +99,13 @@ const IndividualVideoDataMain = inject(
       console.log("like value called");
       return individualLike;
     };
+    const { title, video_url, channel, description } = indData;
     const descriptionFunction = () => {
       return (
         <IndividualCompDetailedmain>
-          <h5>{indData.channel.name}</h5>
-          <p>{indData.channel.subscriber_count} subscribers</p>
-          <p>{indData.description}</p>
+          <h5>{channel.name}</h5>
+          <p>{channel.subscriber_count} subscribers</p>
+          <p>{description}</p>
         </IndividualCompDetailedmain>
       );
     };
@@ -112,7 +113,7 @@ const IndividualVideoDataMain = inject(
       <IndividualVideoContainer>
         <IndividualVideoReactPlayer>
           <ReactPlayer
-            url={indData.video_url}
+            url={video_url}
             width="auto"
             height="100%"
             controls={true}
@@ -120,7 +121,7 @@ const IndividualVideoDataMain = inject(
         </IndividualVideoReactPlayer>
         <IndividualVideoReactPlayerDetail colors={globalData.themes}>
           <IndividualVideoReactPlayerDetailHeading>
-            {indData.title}
+            {title}
           </IndividualVideoReactPlayerDetailHeading>
           <IndividualVideoReactPlayerDetailDescription>
             <IndividualVideoReactPlayerDescription>
@@ -162,7 +163,7 @@ const IndividualVideoDataMain = inject(
           <IndividualCompDetailed>
             <IndividualCompDetaileddivimg>
               <IndividualCompDetailedimg
-                src={indData.channel.profile_image_url}
+                src={channel.profile_image_url}
                 alt="Profilelogo"
               ></IndividualCompDetailedimg>
             </IndividualCompDetaileddivimg>

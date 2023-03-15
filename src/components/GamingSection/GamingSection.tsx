@@ -1,5 +1,5 @@
-import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { toJS } from "mobx";
+import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { inject, observer } from "mobx-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -15,11 +15,11 @@ import { VideoStore } from "../../stores/VideoStore";
 import Failure from "../FailureView";
 import GamingDataContainer from "../GamingDataContainer";
 import LoaderMain from "../LoaderComponent";
-import SideMainHeading from "../SideMainHeading";
+import SideMainHeading from "../SideBarMenuSection";
 import {
   GameingMainComponent,
   GameingMainIndividualComponent,
-} from "./StyledComponents";
+} from "./styledComponents";
 interface GamingMainContainerProps {}
 interface InjectedGamingMainContainerProps extends GamingMainContainerProps {
   globalStore: GlobalStore;

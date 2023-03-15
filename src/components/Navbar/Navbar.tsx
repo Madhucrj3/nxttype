@@ -20,7 +20,7 @@ import {
   NavbarContainerRightMobileView,
   NavbarContainerRightMobileViewCurr,
   NavbarDropdown,
-} from "./NavbarStyld";
+} from "./styledComponent";
 import { inject, observer } from "mobx-react";
 import { GlobalStore } from "../../stores/GlobalStore";
 import { LIGHT } from "../../constants/GlobalData";

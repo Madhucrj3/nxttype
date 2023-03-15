@@ -1,5 +1,5 @@
-import SiderbarIcon from "../Siderbaricon";
 import { inject, observer } from "mobx-react";
+import SiderbarIcon from "../Siderbaricon";
 import { GlobalStore } from "../../stores/GlobalStore";
 import SocialMediaIcon from "../SocialMediaIcon";
 import {

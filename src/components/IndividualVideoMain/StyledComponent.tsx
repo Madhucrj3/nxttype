@@ -37,17 +37,17 @@ export const IndividualVideoReactPlayerDescription = styled.div`
   display: flex;
   justify-content: space-between;
 `;
-export const IndividualVideoReactPlayerLike = styled.div`
+export const IndividualVideoReactPlayerAction = styled.div`
   cursor: pointer;
   margin: 0 0.8rem;
 `;
 interface IndividualVideoReactPlayerActionContainerInterface {
   theme: string;
-  isLikedClicked: boolean;
+  handleClicked: boolean;
 }
 export const IndividualVideoReactPlayerActionContainer = styled.div<IndividualVideoReactPlayerActionContainerInterface>`
   color: ${(props) =>
-    props.isLikedClicked ? "blue" : props.theme === LIGHT ? "000" : "fff"};
+    props.handleClicked ? "blue" : props.theme === LIGHT ? "000" : "fff"};
 `;
 export const IndividualVideoReactPlayerActionName = styled.span`
   margin-left: 0.3rem;

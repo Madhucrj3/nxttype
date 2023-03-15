@@ -1,16 +1,17 @@
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
-import React from "react";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GlobalStore } from "../../stores/GlobalStore";
 import {
   IndividualVideoReactPlayerActionContainer,
   IndividualVideoReactPlayerActionName,
-  IndividualVideoReactPlayerLike,
+  IndividualVideoReactPlayerAction,
 } from "../IndividualVideoMain/StyledComponent";
 interface IndividualActionContainerProps {
   text: string;
   handleActionItem(): void;
+  isClicked: boolean;
+  iconsFont: IconDefinition;
 }
 interface InjectedIndividualActionContainerProps
   extends IndividualActionContainerProps {
@@ -18,25 +19,25 @@ interface InjectedIndividualActionContainerProps
 }
 const IndividualActionContainer = inject("globalStore")(
   observer((props: IndividualActionContainerProps) => {
-    const { text, handleActionItem } = props;
+    const { text, handleActionItem, isClicked, iconsFont } = props;
     const { globalStore: globalData } =
       props as InjectedIndividualActionContainerProps;
     const handleClick = () => {
       handleActionItem();
     };
     return (
-      <IndividualVideoReactPlayerLike>
+      <IndividualVideoReactPlayerAction>
         <IndividualVideoReactPlayerActionContainer
           theme={globalData.themes}
-          isLikedClicked={false}
+          handleClicked={isClicked}
           onClick={handleClick}
         >
-          <FontAwesomeIcon icon={faThumbsUp} />
+          <FontAwesomeIcon icon={iconsFont} />
           <IndividualVideoReactPlayerActionName>
             {text}
           </IndividualVideoReactPlayerActionName>
         </IndividualVideoReactPlayerActionContainer>
-      </IndividualVideoReactPlayerLike>
+      </IndividualVideoReactPlayerAction>
     );
   })
 );

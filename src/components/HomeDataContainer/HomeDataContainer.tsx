@@ -1,5 +1,4 @@
 import { inject, observer } from "mobx-react";
-import { Link } from "react-router-dom";
 import { GlobalStore } from "../../stores/GlobalStore";
 import { VideoDetailInterface } from "../../stores/type";
 import { VideoStore } from "../../stores/VideoStore";

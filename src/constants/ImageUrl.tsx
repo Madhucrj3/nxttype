@@ -26,3 +26,5 @@ export const NOT_FOUND_LIGHT_ROUTE =
   "https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png";
 export const NOT_FOUND_DARK_ROUTE =
   "https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-dark-theme-img.png";
+export const BANNER_HOME =
+  "https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png";

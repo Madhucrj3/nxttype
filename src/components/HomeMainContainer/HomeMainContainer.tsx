@@ -6,7 +6,7 @@ import { inject, observer } from "mobx-react";
 import { GlobalStore } from "../../stores/GlobalStore";
 import LoaderMain from "../LoaderComponent";
 import HomeBanner from "../HomeBanner";
-import HomeSearchBar from "../HomeSearchBar";
+import HomeSearchBar from "../HomePageSearchBar";
 import { VideoStore } from "../../stores/VideoStore";
 import { INITIAL, LOADING, SUCESS } from "../../constants/ApiStatuss";
 import HomeDataContainer from "../HomeDataContainer";

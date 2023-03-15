@@ -13,7 +13,7 @@ import { VideoDetailInterface } from "../../stores/type";
 import { VideoStore } from "../../stores/VideoStore";
 import Failure from "../FailureView";
 import LoaderMain from "../LoaderComponent";
-import SideMainHeading from "../SideMainHeading";
+import SideMainHeading from "../SideBarMenuSection";
 import TrendingDataContainer from "../TrendingDataContainer";
 import { TrendMainComp, TrendMainData } from "./StyledComponent";
 interface TrendingMainContainerProps {}

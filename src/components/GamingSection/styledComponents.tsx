@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 interface GamingInterfaceStyledComponent {
   bcol?: string;
@@ -31,6 +32,9 @@ export const GameIndividualMainContainer = styled.div`
     width: 30%;
   }
 `;
+export const GameLink = styled(Link)`
+  text-decoration: none;
+`;
 export const GameIndividualMain = styled.div`
   width: 100%;
   margin-bottom: 1rem;
@@ -43,10 +47,10 @@ export const GameIndividualMaindetail = styled.div``;
 export const GameIndividualMainHeading = styled.h5<GamingInterfaceStyledComponent>`
   margin-top: 8px;
   margin-bottom: 3px;
-  color: ${(props) => props.colorTitle};
+  color: ${(props) => (props.colorTitle === "Light" ? "#000" : "#fff")};
 `;
 export const GameIndividualMainParagraph = styled.p<GamingInterfaceStyledComponent>`
   margin-top: 3px;
   font-size: 12px;
-  color: ${(props) => props.colorParagraph};
+  color: ${(props) => (props.colorParagraph === "Light" ? "#000" : "#cbd5e1")};
 `;

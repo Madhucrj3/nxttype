@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { BANNER_HOME } from "../../constants/ImageUrl";
 interface HomeColour {
   fontcolr: string;
 }
@@ -14,7 +15,7 @@ export const HomeMainPageContainer = styled.div`
 export const HomeMainContainerbanner = styled.div`
   padding: 1rem;
   margin-bottom: 2rem;
-  background-image: url("https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png");
+  background-image: url(${BANNER_HOME});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50% 50%;

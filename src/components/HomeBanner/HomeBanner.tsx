@@ -1,6 +1,7 @@
+import { inject, observer } from "mobx-react";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { inject, observer } from "mobx-react";
+import { NXTWATCH_LOGO_LIGHT } from "../../constants/ImageUrl";
 import { GlobalStore } from "../../stores/GlobalStore";
 import {
   HomeBannerCross,
@@ -30,7 +31,7 @@ const HomeBanner = inject("globalStore")(
                 marginTop: "2rem",
                 marginBottom: "1rem",
               }}
-              src1="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+              src1={NXTWATCH_LOGO_LIGHT}
               alt1="logo"
             />
             <HomeMainContainerbannerpara>

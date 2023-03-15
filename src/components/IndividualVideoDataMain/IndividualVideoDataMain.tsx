@@ -1,7 +1,6 @@
-import { inject, observer } from "mobx-react";
 import { useEffect, useState } from "react";
+import { inject, observer } from "mobx-react";
 import ReactPlayer from "react-player";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faThumbsDown,
   faThumbsUp,
@@ -23,12 +22,10 @@ import {
   IndividualVideoReactPlayer,
   IndividualVideoReactPlayerDetail,
   IndividualVideoReactPlayerDetailDescription,
-  IndividualVideoReactPlayerLike,
   IndividualVideoReactPlayerLikeContainer,
   IndividualVideoReactPlayerDetailHeading,
-  IndividualVideoReactPlayerActionContainer,
-  IndividualVideoReactPlayerActionName,
 } from "../IndividualVideoMain/StyledComponent";
+import IndividualActionContainer from "../IndividualActionContainer";
 
 interface IndividualVideoDataMainProps {
   indVidualVideo: IndividualVideoDetailInterface;
@@ -102,6 +99,15 @@ const IndividualVideoDataMain = inject(
       console.log("like value called");
       return individualLike;
     };
+    const descriptionFunction = () => {
+      return (
+        <IndividualCompDetailedmain>
+          <h5>{indData.channel.name}</h5>
+          <p>{indData.channel.subscriber_count} subscribers</p>
+          <p>{indData.description}</p>
+        </IndividualCompDetailedmain>
+      );
+    };
     return (
       <IndividualVideoContainer>
         <IndividualVideoReactPlayer>
@@ -132,42 +138,24 @@ const IndividualVideoDataMain = inject(
               </p>
             </IndividualVideoReactPlayerDescription>
             <IndividualVideoReactPlayerLikeContainer>
-              <IndividualVideoReactPlayerLike>
-                <IndividualVideoReactPlayerActionContainer
-                  theme={globalData.themes}
-                  isLikedClicked={likeValue()}
-                  onClick={handleLike}
-                >
-                  <FontAwesomeIcon icon={faThumbsUp} />
-                  <IndividualVideoReactPlayerActionName>
-                    Like
-                  </IndividualVideoReactPlayerActionName>
-                </IndividualVideoReactPlayerActionContainer>
-              </IndividualVideoReactPlayerLike>
-              <IndividualVideoReactPlayerLike>
-                <IndividualVideoReactPlayerActionContainer
-                  onClick={handledisLike}
-                  theme={globalData.themes}
-                  isLikedClicked={individualDislike}
-                >
-                  <FontAwesomeIcon icon={faThumbsDown} />
-                  <IndividualVideoReactPlayerActionName>
-                    Dislike
-                  </IndividualVideoReactPlayerActionName>
-                </IndividualVideoReactPlayerActionContainer>
-              </IndividualVideoReactPlayerLike>
-              <IndividualVideoReactPlayerLike>
-                <IndividualVideoReactPlayerActionContainer
-                  onClick={handleSaveVideo}
-                  theme={globalData.themes}
-                  isLikedClicked={individualSaveVideo}
-                >
-                  <FontAwesomeIcon icon={faVideo} />
-                  <IndividualVideoReactPlayerActionName>
-                    save
-                  </IndividualVideoReactPlayerActionName>
-                </IndividualVideoReactPlayerActionContainer>
-              </IndividualVideoReactPlayerLike>
+              <IndividualActionContainer
+                text="Like"
+                isClicked={likeValue()}
+                handleActionItem={handleLike}
+                iconsFont={faThumbsUp}
+              />
+              <IndividualActionContainer
+                text="DisLike"
+                isClicked={individualDislike}
+                handleActionItem={handledisLike}
+                iconsFont={faThumbsDown}
+              />
+              <IndividualActionContainer
+                text="Save"
+                isClicked={individualSaveVideo}
+                handleActionItem={handleSaveVideo}
+                iconsFont={faVideo}
+              />
             </IndividualVideoReactPlayerLikeContainer>
           </IndividualVideoReactPlayerDetailDescription>
           <IndividualVideComponentline></IndividualVideComponentline>
@@ -178,11 +166,7 @@ const IndividualVideoDataMain = inject(
                 alt="Profilelogo"
               ></IndividualCompDetailedimg>
             </IndividualCompDetaileddivimg>
-            <IndividualCompDetailedmain>
-              <h5>{indData.channel.name}</h5>
-              <p>{indData.channel.subscriber_count} subscribers</p>
-              <p>{indData.description}</p>
-            </IndividualCompDetailedmain>
+            {descriptionFunction()}
           </IndividualCompDetailed>
         </IndividualVideoReactPlayerDetail>
       </IndividualVideoContainer>

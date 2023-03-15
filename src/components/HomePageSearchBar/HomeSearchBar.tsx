@@ -12,7 +12,7 @@ interface HomeSearchBarProps {}
 interface InjectedHomeSearchBarProps {
   videoStore: VideoStore;
 }
-const HomeSearchBar = inject("videoStore")(
+const HomePageSearchBar = inject("videoStore")(
   observer((props: HomeSearchBarProps) => {
     const { videoStore } = props as InjectedHomeSearchBarProps;
     const handleHomeSearchBar = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,4 +38,4 @@ const HomeSearchBar = inject("videoStore")(
   })
 );
 
-export default HomeSearchBar;
+export default HomePageSearchBar;

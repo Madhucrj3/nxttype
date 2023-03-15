@@ -14,7 +14,7 @@ interface SideMainHeadingProps {
 interface InjectedSideMainHeadingProps extends SideMainHeadingProps {
   globalStore: GlobalStore;
 }
-const SideMainHeading = inject("globalStore")(
+const SideBarMenuSection = inject("globalStore")(
   observer((props: SideMainHeadingProps) => {
     const { globalStore: globalvar } = props as InjectedSideMainHeadingProps;
     const { titleName, iconss } = props;
@@ -34,4 +34,4 @@ const SideMainHeading = inject("globalStore")(
   })
 );
 
-export default SideMainHeading;
+export default SideBarMenuSection;

@@ -1,5 +1,4 @@
 import { inject, observer } from "mobx-react";
-import { Link } from "react-router-dom";
 import { GlobalStore } from "../../stores/GlobalStore";
 import { VideoDetailInterface } from "../../stores/type";
 import {
@@ -10,7 +9,8 @@ import {
   GameIndividualMainHeading,
   GameIndividualMainImg,
   GameIndividualMainParagraph,
-} from "../GamingMainContainer/StyledComponents";
+  GameLink,
+} from "../GamingSection/styledComponents";
 interface GamingDataContainerProps {
   game: VideoDetailInterface;
 }
@@ -19,32 +19,26 @@ interface InjectedGamingDataContainerProps extends GamingDataContainerProps {
 }
 const GamingDataContainer = inject("globalStore")(
   observer((props: GamingDataContainerProps) => {
-    const { globalStore: globalVar } =
-      props as InjectedGamingDataContainerProps;
+    const { globalStore: theme } = props as InjectedGamingDataContainerProps;
     const { game } = props;
+    const { id, thumbnail_url, title, view_count } = game;
     return (
       <GameIndividualMainContainer>
-        <Link to={`/videos/${game.id}`} style={{ textDecoration: "none" }}>
+        <GameLink to={`/videos/${id}`}>
           <GameIndividualMain>
             <GameIndividualMainImageContainer>
-              <GameIndividualMainImg src={game.thumbnail_url} alt="game" />
+              <GameIndividualMainImg src={thumbnail_url} alt="game" />
             </GameIndividualMainImageContainer>
             <GameIndividualMaindetail>
-              <GameIndividualMainHeading
-                colorTitle={globalVar.themes === "Light" ? "#000" : "#fff"}
-              >
-                {game.title}
+              <GameIndividualMainHeading colorTitle={theme.themes}>
+                {title}
               </GameIndividualMainHeading>
-              <GameIndividualMainParagraph
-                colorParagraph={
-                  globalVar.themes === "Light" ? "#000" : "#cbd5e1"
-                }
-              >
-                {game.view_count} Watching WorldWide
+              <GameIndividualMainParagraph colorParagraph={theme.themes}>
+                {view_count} Watching WorldWide
               </GameIndividualMainParagraph>
             </GameIndividualMaindetail>
           </GameIndividualMain>
-        </Link>
+        </GameLink>
       </GameIndividualMainContainer>
     );
   })

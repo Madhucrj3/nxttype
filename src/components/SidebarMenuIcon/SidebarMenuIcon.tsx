@@ -1,9 +1,9 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
-import { GlobalStore } from "../../stores/GlobalStore";
-import { SidebarIcon, SideBarspan } from "./SiderbarMenuIconStyledComp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { GlobalStore } from "../../stores/GlobalStore";
 import { LIGHT } from "../../constants/GlobalData";
+import { SidebarIcon, SideBarspan } from "./SiderbarMenuIconStyledComp";
 interface SidebarMenuIconProps {
   icons: IconDefinition;
   handleClickSidebarIcon(): void;

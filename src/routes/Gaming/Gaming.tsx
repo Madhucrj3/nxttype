@@ -1,5 +1,5 @@
 import { inject, observer } from "mobx-react";
-import GamingMainContainer from "../../components/GamingMainContainer";
+import GamingMainContainer from "../../components/GamingSection";
 import withNavbarSidebarhoc from "../../hocs/withNavbarSidebarhoc";
 import { GlobalStore } from "../../stores/GlobalStore";
 import { GAME } from "../../constants/SideBarStatus";

@@ -33,6 +33,7 @@ import {
   NXTWATCH_LOGO_LIGHT,
   PROFILE_IMAGE,
 } from "../../constants/ImageUrl";
+import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 interface Navbarprops {}
 interface InjectedNavbarProps extends Navbarprops {
   globalStore: GlobalStore;
@@ -76,6 +77,7 @@ const Navbar = inject("globalStore")(
             />
           </NavbarContainerLeft>
           <NavbarContainerRight>
+            <LanguageDropdown />
             <Logo
               logoStyles={{
                 width: "30px",

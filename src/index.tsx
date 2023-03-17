@@ -1,10 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import * as allStore from "./stores/index";
+import i18n from "./common/i18n";
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom/client";
+import { I18nextProvider } from "react-i18next";
+import "./index.css";
+const App = React.lazy(() => import("./App"));
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
-console.log(allStore);
-root.render( <App />);
+root.render(
+  <I18nextProvider i18n={i18n}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <App />
+    </Suspense>
+  </I18nextProvider>
+);

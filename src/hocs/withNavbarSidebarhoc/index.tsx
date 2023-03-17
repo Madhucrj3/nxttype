@@ -15,6 +15,7 @@ const withNavbarSidebarhoc = (WrappedComponent: React.ComponentType<any>) => {
       return (
         <>
           <Navbar />
+
           <WrapperStyledComponent bcol={theme.themes}>
             <SideBarContainer />
             <WrappedComponent />

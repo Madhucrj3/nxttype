@@ -1,4 +1,5 @@
 import { inject, observer } from "mobx-react";
+import { useEffect } from "react";
 import TrendingMainContainer from "../../components/TrendingMainContainer";
 import { TREND } from "../../constants/MenuItem";
 import withNavbarSidebarhoc from "../../hocs/withNavbarSidebarhoc";
@@ -10,7 +11,9 @@ interface InjectedTrendingProps {
 const Trending = inject("globalStore")(
   observer((props: Trendingprops) => {
     const { globalStore } = props as InjectedTrendingProps;
-    globalStore.setStatus(TREND);
+    useEffect(() => {
+      globalStore.setStatus(TREND);
+    }, []);
     return (
       <>
         <TrendingMainContainer />

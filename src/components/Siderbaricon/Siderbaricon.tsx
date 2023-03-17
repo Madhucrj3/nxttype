@@ -5,6 +5,7 @@ import {
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 import { inject, observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { GAME, HOME, SAVED, TREND } from "../../constants/MenuItem";
 import { GlobalStore } from "../../stores/GlobalStore";
@@ -19,6 +20,7 @@ const SiderbarIcon = inject("globalStore")(
     const navigate = useNavigate();
     const { globalStore } = props as InjectedSiderbariconProps;
     console.log(globalStore);
+    const { t } = useTranslation();
     const handleSideIconhHome = () => {
       globalStore.setStatus(HOME);
       navigate("/");
@@ -40,25 +42,25 @@ const SiderbarIcon = inject("globalStore")(
         <SidebarMenuIcon
           icons={faHome}
           handleClickSidebarIcon={handleSideIconhHome}
-          text="Home"
+          text={t("home")}
           isActive={globalStore.status === HOME ? true : false}
         />
         <SidebarMenuIcon
           icons={faFireFlameCurved}
           handleClickSidebarIcon={handleSideIconTrend}
-          text="Trending"
+          text={t("trend")}
           isActive={globalStore.status === TREND ? true : false}
         />
         <SidebarMenuIcon
           icons={faGamepad}
           handleClickSidebarIcon={handleSideIconGame}
-          text="Gaming"
+          text={t("game")}
           isActive={globalStore.status === GAME ? true : false}
         />
         <SidebarMenuIcon
           icons={faVideo}
           handleClickSidebarIcon={handleSideIconSaved}
-          text="Saved Video"
+          text={t("saved")}
           isActive={globalStore.status === SAVED ? true : false}
         />
       </SideBarIconContainer>

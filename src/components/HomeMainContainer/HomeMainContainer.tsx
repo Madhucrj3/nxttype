@@ -28,7 +28,6 @@ const HomeMainContainer = inject(
 )(
   observer((props: HomeProps) => {
     const { globalStore: theme, videoStore } = props as InjectedHomeProps;
-    console.log(toJS(videoStore.homeVideoData));
     const data = toJS(videoStore.homeVideoData);
     const navigate = useNavigate();
     useEffect(() => {

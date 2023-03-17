@@ -1,53 +1,51 @@
 import { action, observable } from "mobx";
 import { ApiStatus, userDetail } from "../type";
 class LoginStore {
-  @observable 
-  loginErrorMessage!:string
-  @observable 
-  apiStatus!:ApiStatus;
+  @observable
+  loginErrorMessage!: string;
+  @observable
+  apiStatus!: ApiStatus;
 
-  constructor(){
-    this.init()
+  constructor() {
+    this.init();
   }
 
   @action
-  init(){
-    this.loginErrorMessage = ""
-    this.apiStatus = ApiStatus.INITIAL
+  init() {
+    this.loginErrorMessage = "";
+    this.apiStatus = ApiStatus.INITIAL;
   }
-  @action 
-  fetchToken=async(userDetails:userDetail)=>{
-    this.apiStatus=ApiStatus.LOADING;
-    const URL = 'https://apis.ccbp.in/login';
-    const response=await fetch(URL, {
-        method: "POST",
-        body: JSON.stringify(userDetails)
+  @action
+  fetchToken = async (userDetails: userDetail) => {
+    this.apiStatus = ApiStatus.LOADING;
+    const URL = "https://apis.ccbp.in/login";
+    const response = await fetch(URL, {
+      method: "POST",
+      body: JSON.stringify(userDetails),
     })
-   .then((response) => response.json())
-    .then((data) => {
-    console.log('Success:', data);
-     return data;
-    })
-  .catch((error) => {
-    console.error('Error:', error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        return data;
+      })
+      .catch((error) => {
+        this.apiStatus = ApiStatus.FAILURE;
+        console.error("Error:", error);
+      });
     console.log(response);
-    if(response.status_code===400)
-    {
-      this.apiStatus=ApiStatus.FAILURE;
-      this.loginErrorMessage=response.error_msg;
+    if (response.status_code === 400) {
+      this.apiStatus = ApiStatus.FAILURE;
+      this.loginErrorMessage = response.error_msg;
+    } else {
+      localStorage.setItem("token", response.jwt_token);
+      this.apiStatus = ApiStatus.SUCESS;
     }
-    else
-    {
-      localStorage.setItem('token',response.jwt_token);
-      this.apiStatus=ApiStatus.SUCESS;
-    }
-  }
+  };
 
-  clearStore(){
-    this.init()
+  clearStore() {
+    this.init();
   }
 }
-const loginStore=new LoginStore();
+const loginStore = new LoginStore();
 export default loginStore;
-export {LoginStore}
+export { LoginStore };

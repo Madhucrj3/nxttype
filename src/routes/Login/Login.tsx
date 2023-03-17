@@ -35,7 +35,6 @@ const Login = inject(
     const [showPassword, setshowPassword] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    //REVIEW: Keep two states for username and password
     const navigate = useNavigate();
     useEffect(() => {
       const token = localStorage.getItem("token");
@@ -104,6 +103,7 @@ const Login = inject(
               height: "40px",
               borderRadius: "8px",
               backgroundColor: "#3b82f6",
+              marginTop: "1rem",
               border: "none",
               color: "#fff",
               fontSize: "1rem",

@@ -1,4 +1,5 @@
 import { inject, observer } from "mobx-react";
+import { useEffect } from "react";
 import SaveVideoMainContainer from "../../components/SavedVideoContainer";
 import { SAVED } from "../../constants/MenuItem";
 import withNavbarSidebarhoc from "../../hocs/withNavbarSidebarhoc";
@@ -10,7 +11,9 @@ interface InjectedSavedvideoProps {
 const Savedvideo = inject("globalStore")(
   observer((props: Savedvideoprops) => {
     const { globalStore } = props as InjectedSavedvideoProps;
-    globalStore.setStatus(SAVED);
+    useEffect(() => {
+      globalStore.setStatus(SAVED);
+    }, []);
     return (
       <>
         <SaveVideoMainContainer />

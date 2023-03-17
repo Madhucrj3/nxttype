@@ -67,7 +67,6 @@ const IndividualVideoDataMain = inject(
 
     const handleLike = () => {
       setLikeVideo(indData.id);
-      console.log("liked");
       if (id !== undefined && videoStore.handleLikeInStore(id)) {
         setIndividualLike(true);
         setIndividualDislike(false);
@@ -77,7 +76,6 @@ const IndividualVideoDataMain = inject(
       }
     };
     const handledisLike = () => {
-      console.log("disliked");
       setDisLikeVideo(indData.id);
       if (id !== undefined && videoStore.handledislikeInStore(id)) {
         setIndividualDislike(true);

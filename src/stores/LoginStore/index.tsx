@@ -5,7 +5,8 @@ class LoginStore {
   loginErrorMessage!: string;
   @observable
   apiStatus!: ApiStatus;
-
+  @observable
+  isLoggedIn: boolean = false;
   constructor() {
     this.init();
   }
@@ -38,6 +39,8 @@ class LoginStore {
       this.loginErrorMessage = response.error_msg;
     } else {
       localStorage.setItem("token", response.jwt_token);
+      this.isLoggedIn = true;
+      console.log(this.isLoggedIn);
       this.apiStatus = ApiStatus.SUCESS;
     }
   };

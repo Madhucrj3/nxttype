@@ -13,6 +13,7 @@ class LoginStore {
 
   @action
   init() {
+    if (localStorage.getItem("token")) this.isLoggedIn = true;
     this.loginErrorMessage = "";
     this.apiStatus = ApiStatus.INITIAL;
   }

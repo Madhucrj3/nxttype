@@ -1,8 +1,8 @@
 import { inject, observer } from "mobx-react";
 import { GlobalStore } from "../../stores/GlobalStore";
+import Button from "../Button";
 import {
   FailureMain,
-  FailureMainButton,
   FailureMainContainer,
   FailureMainHeading,
   FailureMainImg,
@@ -38,7 +38,19 @@ const Failure = inject("globalStore")(
           </FailureMainImgContainer>
           <FailureMainHeading>{heading}</FailureMainHeading>
           <FailureMainDescription>{description}</FailureMainDescription>
-          <FailureMainButton onClick={handleretry}>Retry</FailureMainButton>
+          <Button
+            text="Retry"
+            btnstyle={{
+              backgroundColor: "#3b82f6",
+              border: "none",
+              color: "#fff",
+              fontWeight: "600",
+              padding: "0.5rem 1rem",
+              cursor: "pointer",
+              borderRadius: "5px",
+            }}
+            handleOnClick={handleretry}
+          />
         </FailureMain>
       </FailureMainContainer>
     );

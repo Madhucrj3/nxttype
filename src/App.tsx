@@ -3,14 +3,14 @@ import * as allStore from "./stores/index";
 
 import RoutesPath from "./routes/Route/Routes";
 
-const App=() =>{
+const App = () => {
   return (
     <div className="App">
-       <Provider {...allStore}>
-          <RoutesPath />
-       </Provider>
+      <Provider {...allStore}>
+        <RoutesPath />
+      </Provider>
     </div>
   );
-}
+};
 
 export default App;

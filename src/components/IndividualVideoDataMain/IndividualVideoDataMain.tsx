@@ -111,6 +111,7 @@ const IndividualVideoDataMain = inject(
       <IndividualVideoContainer>
         <IndividualVideoReactPlayer>
           <ReactPlayer
+            data-testid={`video-player-${id}`}
             url={video_url}
             width="auto"
             height="100%"

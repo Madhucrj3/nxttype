@@ -47,6 +47,7 @@ const HomeDataContainer = inject(
             <HomeDataSecondImageContainer>
               <HomeDataSecondContainerImage
                 src={channel?.profile_image_url}
+                alt="profileImage"
               ></HomeDataSecondContainerImage>
             </HomeDataSecondImageContainer>
             <HomeDataSecondContainerDescription>

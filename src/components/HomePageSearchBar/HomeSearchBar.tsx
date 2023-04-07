@@ -19,6 +19,7 @@ const HomePageSearchBar = inject("videoStore")(
       videoStore.setHomeSearch(e.target.value);
     };
     const handleSearchHome = () => {
+      console.log("hello");
       videoStore.fetchHomeData();
     };
     return (
@@ -29,7 +30,10 @@ const HomePageSearchBar = inject("videoStore")(
             value={videoStore.homeSearch}
             onChange={handleHomeSearchBar}
           ></HomeSearchInput>
-          <HomePageSearchImageContainer onClick={handleSearchHome}>
+          <HomePageSearchImageContainer
+            data-testid="searchIcon"
+            onClick={handleSearchHome}
+          >
             <FontAwesomeIcon icon={faSearch} />
           </HomePageSearchImageContainer>
         </HomePageSearchContainer>

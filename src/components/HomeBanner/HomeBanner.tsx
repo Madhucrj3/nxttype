@@ -19,6 +19,7 @@ const HomeBanner = inject("globalStore")(
   observer((props: HomeBanners) => {
     const { globalStore: theme } = props as InjectedHomeBannerProps;
     const handleBannerCross = () => {
+      console.log("4rfe");
       theme.setCrossBanner();
     };
     return (
@@ -38,7 +39,7 @@ const HomeBanner = inject("globalStore")(
               Buy Nxt Watch Premium plans with UPI
             </HomeMainContainerbannerpara>
             <HomeMainContainerbannerbtn>GET IT NOW</HomeMainContainerbannerbtn>
-            <HomeBannerCross onClick={handleBannerCross}>
+            <HomeBannerCross data-testid="icon" onClick={handleBannerCross}>
               <FontAwesomeIcon icon={faXmark} />
             </HomeBannerCross>
           </HomeMainContainerbanner>

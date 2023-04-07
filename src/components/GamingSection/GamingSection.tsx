@@ -47,6 +47,7 @@ const GamingMainContainer = inject(
       const apiStatus = videoStore.gameingApiStatus;
       switch (apiStatus) {
         case INITIAL:
+          console.log("init");
           return <LoaderMain />;
         case LOADING:
           return <LoaderMain />;

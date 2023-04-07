@@ -31,8 +31,8 @@ const HomeMainContainer = inject(
     const data = toJS(videoStore.homeVideoData);
     const navigate = useNavigate();
     useEffect(() => {
-      videoStore.fetchHomeData();
-    }, []);
+      if (videoStore.homeSearch === "") videoStore.fetchHomeData();
+    }, [videoStore.homeSearch]);
     const handleRetryPage = () => {
       navigate("/");
     };

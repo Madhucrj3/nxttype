@@ -1,11 +1,13 @@
 import { action, observable } from "mobx";
 import ApiService from "../../services/VideoServices/index.api";
+import ApiServiceFixture from "../../services/VideoServices/index.fixture";
 import {
   ApiStatus,
   IndividualVideoDetailInterface,
   VideoDetailInterface,
 } from "../type";
 class VideoStore {
+  service: ApiService | ApiServiceFixture;
   @observable
   homeSearch: string;
   @observable
@@ -43,43 +45,32 @@ class VideoStore {
     this.savedVideo = [];
     this.gamingVideoList = [];
     this.gameingApiStatus = ApiStatus.INITIAL;
+    this.service =
+      process.env.IS_JEST === "true"
+        ? new ApiServiceFixture()
+        : new ApiService();
   }
   @action
   getGamingList = async () => {
     this.gameingApiStatus = ApiStatus.LOADING;
-    // const URL = "https://apis.ccbp.in/videos/gaming";
-    // const response = await fetch(URL, {
-    //   method: "GET",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    // })
-    //   .then((response) => {
-    //     return response.json();
-    //   })
-    //   .catch((error) => {
-    //     this.gameingApiStatus = ApiStatus.FAILURE;
-    //     console.error("Error:", error);
-    //   });
-    // if (response.status_code === 400) {
-    //   this.gameingApiStatus = ApiStatus.FAILURE;
-    //   console.log("error");
-    // } else {
-    //   this.gamingVideoList = response.videos;
-    //   this.gameingApiStatus = ApiStatus.SUCESS;
-    // }
-    const service = new ApiService();
-    service.getGamingDataDetails().then(
-      (response) => {
-        if (response) {
-          console.log(response.json());
+    await this.service
+      .getGamingDataDetails()
+      .then(
+        (response) => {
+          if (response) {
+            this.gameingApiStatus = ApiStatus.SUCESS;
+            this.gamingVideoList = response.videos;
+          }
+        },
+        (reason) => {
+          console.log(reason, "Error ??");
+          this.gameingApiStatus = ApiStatus.FAILURE;
+          console.log(reason);
         }
-      },
-      (reason) => {
-        console.log(reason);
-      }
-    );
+      )
+      .catch((error) => {
+        console.log(error, ">>ERROR<<");
+      });
   };
   handleLikeInStore = (id: string) => {
     if (this.likeVideo.includes(id)) {
@@ -103,55 +94,47 @@ class VideoStore {
   @action
   getTrendData = async () => {
     this.trendingApiStatus = ApiStatus.LOADING;
-    const URL = "https://apis.ccbp.in/videos/trending";
-    const response = await fetch(URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
+    await this.service
+      .getTrendingData()
+      .then(
+        (response) => {
+          if (response) {
+            this.trendingVideoData = response.videos;
+            this.trendingApiStatus = ApiStatus.SUCESS;
+          }
+        },
+        (reason) => {
+          console.log(reason, "Error ??");
+          this.trendingApiStatus = ApiStatus.FAILURE;
+          console.log(reason);
+        }
+      )
       .catch((error) => {
-        this.trendingApiStatus = ApiStatus.FAILURE;
-        console.error("Error:", error);
+        console.log(error, ">>ERROR<<");
       });
-    if (parseInt(response.status_code) >= 400) {
-      console.log("error");
-      this.trendingApiStatus = ApiStatus.FAILURE;
-    } else {
-      this.trendingVideoData = response.videos;
-      this.trendingApiStatus = ApiStatus.SUCESS;
-    }
   };
   @action
   fetchIndvidiualVideoData = async (id: string) => {
     this.indvidiualVideoApiStatus = ApiStatus.LOADING;
-    const URL = `https://apis.ccbp.in/videos/${id}`;
-    const response = await fetch(URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
+    await this.service
+      .getIndvidiualVideoData(id)
+      .then(
+        (response) => {
+          if (response) {
+            console.log(response.video_details);
+            this.indvidiualVideoData = response.video_details;
+            this.indvidiualVideoApiStatus = ApiStatus.SUCESS;
+          }
+        },
+        (reason) => {
+          console.log(reason, "Error ??");
+          this.indvidiualVideoApiStatus = ApiStatus.FAILURE;
+          console.log(reason);
+        }
+      )
       .catch((error) => {
-        this.indvidiualVideoApiStatus = ApiStatus.FAILURE;
-        console.error("Error:", error);
+        console.log(error, ">>ERROR<<");
       });
-    if (parseInt(response.status_code) >= 400) {
-      this.indvidiualVideoApiStatus = ApiStatus.FAILURE;
-    } else {
-      console.log(response.video_details);
-      this.indvidiualVideoData = response.video_details;
-      this.indvidiualVideoApiStatus = ApiStatus.SUCESS;
-    }
   };
   @action
   setHomeSearch = (value: string) => {
@@ -159,31 +142,25 @@ class VideoStore {
   };
   @action
   fetchHomeData = async () => {
-    const token = localStorage.getItem("token");
-    console.log(token);
     this.homeApiStatus = ApiStatus.LOADING;
-    const URL = "https://apis.ccbp.in/videos/all?search=" + this.homeSearch;
-    const response = await fetch(URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
+    await this.service
+      .getHomeData(this.homeSearch)
+      .then(
+        (response) => {
+          if (response) {
+            this.homeVideoData = response.videos;
+            this.homeApiStatus = ApiStatus.SUCESS;
+          }
+        },
+        (reason) => {
+          console.log(reason, "Error ??");
+          this.homeApiStatus = ApiStatus.FAILURE;
+          console.log(reason);
+        }
+      )
       .catch((error) => {
-        this.homeApiStatus = ApiStatus.FAILURE;
-        console.error("Error:", error);
+        console.log(error, ">>ERROR<<");
       });
-    console.log(response.videos);
-    if (parseInt(response.status_code) >= 400) {
-      this.homeApiStatus = ApiStatus.FAILURE;
-    } else {
-      this.homeVideoData = response.videos;
-      this.homeApiStatus = ApiStatus.SUCESS;
-    }
   };
   @action
   setLikeVideo = (id: string) => {

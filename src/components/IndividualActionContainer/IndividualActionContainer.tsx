@@ -31,8 +31,9 @@ const IndividualActionContainer = inject("globalStore")(
           theme={globalData.themes}
           handleClicked={isClicked}
           onClick={handleClick}
+          data-testid={`Action-Container-${text}`}
         >
-          <FontAwesomeIcon icon={iconsFont} />
+          <FontAwesomeIcon icon={iconsFont} data-testid={text} />
           <IndividualVideoReactPlayerActionName>
             {text}
           </IndividualVideoReactPlayerActionName>

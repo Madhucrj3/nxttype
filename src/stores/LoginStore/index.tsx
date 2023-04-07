@@ -1,6 +1,9 @@
 import { action, observable } from "mobx";
+import ApiService from "../../services/VideoServices/index.api";
+import ApiServiceFixture from "../../services/VideoServices/index.fixture";
 import { ApiStatus, userDetail } from "../type";
 class LoginStore {
+  services!: ApiService | ApiServiceFixture;
   @observable
   loginErrorMessage!: string;
   @observable
@@ -10,45 +13,44 @@ class LoginStore {
   constructor() {
     this.init();
   }
-
   @action
   init() {
     if (localStorage.getItem("token")) this.isLoggedIn = true;
     this.loginErrorMessage = "";
     this.apiStatus = ApiStatus.INITIAL;
+    this.services =
+      process.env.IS_JEST === "true"
+        ? new ApiServiceFixture()
+        : new ApiService();
   }
   @action
   fetchToken = async (userDetails: userDetail) => {
     this.apiStatus = ApiStatus.LOADING;
-    const URL = "https://apis.ccbp.in/login";
-    const response = await fetch(URL, {
-      method: "POST",
-      body: JSON.stringify(userDetails),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        return data;
-      })
+    await this.services
+      .fetchToken(userDetails)
+      .then(
+        (response) => {
+          if (response) {
+            if (response.jwt_token !== undefined) {
+              this.apiStatus = ApiStatus.SUCESS;
+              this.isLoggedIn = true;
+              localStorage.setItem("token", response.jwt_token);
+            } else {
+              this.apiStatus = ApiStatus.FAILURE;
+              this.loginErrorMessage = response.error_msg;
+            }
+          }
+        },
+        (reason) => {
+          console.log(reason, "Error ??");
+          this.apiStatus = ApiStatus.FAILURE;
+          this.loginErrorMessage = reason.error_msg;
+        }
+      )
       .catch((error) => {
-        this.apiStatus = ApiStatus.FAILURE;
-        console.error("Error:", error);
+        console.log(error, ">>ERROR<<");
       });
-    console.log(response);
-    if (response.status_code === 400) {
-      this.apiStatus = ApiStatus.FAILURE;
-      this.loginErrorMessage = response.error_msg;
-    } else {
-      localStorage.setItem("token", response.jwt_token);
-      this.isLoggedIn = true;
-      console.log(this.isLoggedIn);
-      this.apiStatus = ApiStatus.SUCESS;
-    }
   };
-
-  clearStore() {
-    this.init();
-  }
 }
 const loginStore = new LoginStore();
 export default loginStore;
